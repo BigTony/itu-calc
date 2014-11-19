@@ -21,4 +21,11 @@ ApplicationWindow {
         text: qsTr("Hello World")
         anchors.centerIn: parent
     }
+
+    Button {
+        id: button1
+        x: 114
+        y: 335
+        text: qsTr("Fucked")
+    }
 }
