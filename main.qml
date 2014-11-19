@@ -29,6 +29,8 @@ ApplicationWindow {
         text: qsTr("Fucked")
 
         MouseArea{
+            id: button1MouseArea
+            anchors.fill: parent
             onClicked: console.log("ahoj")
         }
     }
