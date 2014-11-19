@@ -147,7 +147,6 @@ Rectangle{
 
      Component {
             id: menuDelegate
-
             Column {
                 Rectangle {
                     id: buttonObject
@@ -158,7 +157,6 @@ Rectangle{
                     border.color: "black"
                     border.width: 2
                     anchors.horizontalCenter: parent.horizontalCenter
-
                     Text {
                         id: labelObjectText
                         anchors.centerIn: parent
@@ -167,7 +165,6 @@ Rectangle{
                         font.family: "Cambria Math"
                         font.pointSize: 20
                     }
-
                     MouseArea{
                         id: mouseAreaGridView1
                         anchors.fill: parent
@@ -182,7 +179,6 @@ Rectangle{
                            console.log(textObject)
                         }
                     }
-
                     states: [
                              State {
                                  name: "PRESSED"
@@ -193,7 +189,6 @@ Rectangle{
                                  PropertyChanges { target: buttonObject; color: "grey"}
                              }
                     ]
-
                     transitions: [
                              Transition {
                                  from: "PRESSED"
@@ -207,7 +202,6 @@ Rectangle{
                              }
                     ]
                 }
-
                 Text {
                     x: 5
                     text: name
@@ -217,17 +211,13 @@ Rectangle{
                     wrapMode: Text.Wrap
                     font.pointSize: 12
                 }
-
                 spacing: 5
             }
         }
 
      property int activeGrid: 0
 
-
-
     property list<GridView> gridViews: [
-
          GridView {
              parent: mainRect
              model:mainMenu
@@ -249,29 +239,26 @@ Rectangle{
              cellHeight: 160
              cellWidth: 100
          },
-    GridView {
-        parent: mainRect
-        model:integraly
-        delegate: menuDelegate
-        focus: true
-        Keys.onPressed: {
-            if (event.key == Qt.Key_Q) {
+        GridView {
+            parent: mainRect
+            model:integraly
+            delegate: menuDelegate
+            focus: true
+            Keys.onPressed: {
+                if (event.key == Qt.Key_Q) {
                     console.log('Key q was pressed');
                     event.accepted = true;
+                }
             }
+          visible: false
+         id: integralyGrid
+         x: 46
+         y: 28
+         width: 400
+         height: 640
+         cellHeight: 160
+         cellWidth: 100
         }
-        visible: false
-        id: integralyGrid
-        x: 46
-        y: 28
-        width: 400
-        height: 640
-        cellHeight: 160
-        cellWidth: 100
-    }
-
    ]
-
-
 }
 
