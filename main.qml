@@ -27,5 +27,9 @@ ApplicationWindow {
         x: 114
         y: 335
         text: qsTr("Fucked")
+
+        MouseArea{
+            onClicked: console.log("ahoj")
+        }
     }
 }
