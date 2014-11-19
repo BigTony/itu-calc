@@ -17,24 +17,8 @@ ApplicationWindow {
         }
     }
 
-
-    GridView {
-        focus: true
-        Keys.onPressed: {
-            if (event.key == Qt.Key_Q) {
-                    console.log('Key q was pressed');
-                    event.accepted = true;
-            }
-        }
-
-        id: gridView1
-        x: 46
-        y: 28
-        width: 400
-        height: 640
-        cellHeight: 160
-        model: ListModel {
-
+    ListModel {
+            id:mainMenu
             ListElement{
                 name: "Zakladni operatory"
                 colorCode: "grey"
@@ -126,10 +110,9 @@ ApplicationWindow {
                 labelObject: "9"
             }
         }
-        delegate: Item {
-            id: nasItem
-            x: 5
-            height: 50
+     Component {
+            id: menuDelegate
+
             Column {
                 Rectangle {
 
@@ -166,6 +149,23 @@ ApplicationWindow {
                 spacing: 5
             }
         }
+    GridView {
+        model:mainMenu
+        delegate: menuDelegate
+        focus: true
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Q) {
+                    console.log('Key q was pressed');
+                    event.accepted = true;
+            }
+        }
+
+        id: gridView1
+        x: 46
+        y: 28
+        width: 400
+        height: 640
+        cellHeight: 160
         cellWidth: 100
     }
 
