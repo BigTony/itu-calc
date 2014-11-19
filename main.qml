@@ -127,6 +127,7 @@ ApplicationWindow {
             }
         }
         delegate: Item {
+            id: nasItem
             x: 5
             height: 50
             Column {
@@ -167,5 +168,7 @@ ApplicationWindow {
         }
         cellWidth: 100
     }
+
+
 }
 
