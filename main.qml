@@ -23,7 +23,7 @@ ApplicationWindow {
                 name: "Zakladni operatory"
                 colorCode: "grey"
                 textObject: "1"
-                labelObject: "ZkOp"
+                labelObject: "\u2A1B"
             }
 
             ListElement{
@@ -128,6 +128,8 @@ ApplicationWindow {
                         anchors.centerIn: parent
                         text: labelObject
                         font.bold: true
+                        font.family: "Cambria Math"
+                        font.pointSize: 20
                     }
 
                     MouseArea{
@@ -144,6 +146,7 @@ ApplicationWindow {
                     width: 90
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.Wrap
+                    font.pointSize: 12
                 }
 
                 spacing: 5
