@@ -6,6 +6,7 @@ ApplicationWindow {
     width: 1024
     height: 680
     title: qsTr("Hello World")
+    id: mainWin
 
     menuBar: MenuBar {
         Menu {
@@ -17,6 +18,35 @@ ApplicationWindow {
         }
     }
 
+Rectangle{
+    anchors.fill: parent
+    id: mainRect
+
+    Button {
+        id: button1
+        x: 654
+        y: 60
+        text: qsTr("Button")
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                gridViews[activeGrid].visible = false
+                gridViews[0].visible = true
+                activeGrid = 0
+            }
+        }
+    }
+}
+
+    ListModel {
+            id:integraly
+            ListElement{
+                name: "Integral"
+                colorCode: "grey"
+                textObject: "integral"
+                labelObject: "Int"
+            }
+     }
 
 
     ListModel {
@@ -29,10 +59,12 @@ ApplicationWindow {
             }
 
             ListElement{
+                switchOp: true
                 name: "Integraly"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "Int"
+                gridNumber: 1
             }
 
             ListElement{
@@ -112,6 +144,7 @@ ApplicationWindow {
                 labelObject: "9"
             }
         }
+
      Component {
             id: menuDelegate
 
@@ -138,7 +171,14 @@ ApplicationWindow {
                         anchors.fill: parent
                         onPressed: buttonObject.state = "PRESSED"
                         onReleased: buttonObject.state = "RELEASED"
-                        onClicked: console.log(textObject)
+                        onClicked: {
+                            if(switchOp){
+                                gridViews[activeGrid].visible = false
+                                gridViews[gridNumber].visible = true
+                                activeGrid = textObject
+                            }
+                           console.log(textObject)
+                        }
                     }
 
                     states: [
@@ -178,8 +218,37 @@ ApplicationWindow {
                 spacing: 5
             }
         }
+
+     property int activeGrid: 0
+
+
+
+    property list<GridView> gridViews: [
+
+         GridView {
+             parent: mainRect
+             model:mainMenu
+             delegate: menuDelegate
+             focus: true
+             Keys.onPressed: {
+                 if (event.key == Qt.Key_Q) {
+                         console.log('Key q was pressed');
+                         event.accepted = true;
+                 }
+             }
+
+             id: gridView1
+             visible: true
+             x: 46
+             y: 28
+             width: 400
+             height: 640
+             cellHeight: 160
+             cellWidth: 100
+         },
     GridView {
-        model:mainMenu
+        parent: mainRect
+        model:integraly
         delegate: menuDelegate
         focus: true
         Keys.onPressed: {
@@ -188,8 +257,8 @@ ApplicationWindow {
                     event.accepted = true;
             }
         }
-
-        id: gridView1
+        visible: false
+        id: integralyGrid
         x: 46
         y: 28
         width: 400
@@ -197,6 +266,8 @@ ApplicationWindow {
         cellHeight: 160
         cellWidth: 100
     }
+
+   ]
 
 
 }
