@@ -34,4 +34,10 @@ ApplicationWindow {
             onClicked: console.log("ahoj")
         }
     }
+    Button {
+    id: button2
+    x: 150
+    y: 150
+    text: qsTr("Fucked")}
 }
+
