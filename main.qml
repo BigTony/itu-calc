@@ -17,6 +17,8 @@ ApplicationWindow {
         }
     }
 
+
+
     ListModel {
             id:mainMenu
             ListElement{
@@ -115,7 +117,8 @@ ApplicationWindow {
 
             Column {
                 Rectangle {
-
+                    id: buttonObject
+                    state: "RELEASED"
                     width: 90
                     height: 90
                     color: colorCode
@@ -135,8 +138,34 @@ ApplicationWindow {
                     MouseArea{
                         id: mouseAreaGridView1
                         anchors.fill: parent
+                        onPressed: buttonObject.state = "PRESSED"
+                        onReleased: buttonObject.state = "RELEASED"
                         onClicked: console.log(textObject)
                     }
+
+                    states: [
+                             State {
+                                 name: "PRESSED"
+                                 PropertyChanges { target: buttonObject; color: "blue"}
+                             },
+                             State {
+                                 name: "RELEASED"
+                                 PropertyChanges { target: buttonObject; color: "grey"}
+                             }
+                    ]
+
+                    transitions: [
+                             Transition {
+                                 from: "PRESSED"
+                                 to: "RELEASED"
+                                 ColorAnimation { target: buttonObject; duration: 100}
+                             },
+                             Transition {
+                                 from: "RELEASED"
+                                 to: "PRESSED"
+                                 ColorAnimation { target: buttonObject; duration: 100}
+                             }
+                    ]
                 }
 
                 Text {
