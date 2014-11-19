@@ -3,8 +3,8 @@ import QtQuick.Controls 1.1
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
+    width: 1024
+    height: 680
     title: qsTr("Hello World")
 
     menuBar: MenuBar {
@@ -30,9 +30,9 @@ ApplicationWindow {
         id: gridView1
         x: 46
         y: 28
-        width: 228
-        height: 417
-        cellHeight: 70
+        width: 400
+        height: 640
+        cellHeight: 160
         model: ListModel {
 
             ListElement{
@@ -42,22 +42,43 @@ ApplicationWindow {
                 labelObject: "ZkOp"
             }
 
+            ListElement{
+                name: "Integraly"
+                colorCode: "grey"
+                textObject: "1"
+                labelObject: "Int"
+            }
+
+            ListElement{
+                name: "Logarimy and shit"
+                colorCode: "grey"
+                textObject: "1"
+                labelObject: "LogAshit"
+            }
+
+            ListElement{
+                name: "A nejakej mega shit"
+                colorCode: "grey"
+                textObject: "1"
+                labelObject: "MegaShit"
+            }
+
             ListElement {
-                name: "One"
+                name: "q"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "1"
             }
 
             ListElement {
-                name: "Two"
+                name: "w"
                 colorCode: "grey"
                 textObject: "2"
                 labelObject: "2"
             }
 
             ListElement {
-                name: "Three"
+                name: "e"
                 colorCode: "grey"
                 textObject: "3"
                 labelObject: "3"
@@ -111,8 +132,8 @@ ApplicationWindow {
             Column {
                 Rectangle {
 
-                    width: 50
-                    height: 50
+                    width: 90
+                    height: 90
                     color: colorCode
                     border.color: "black"
                     border.width: 2
@@ -135,14 +156,16 @@ ApplicationWindow {
                 Text {
                     x: 5
                     text: name
-                    anchors.horizontalCenter: parent.horizontalCenter
                     font.bold: true
+                    width: 90
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.Wrap
                 }
 
                 spacing: 5
             }
         }
-        cellWidth: 70
+        cellWidth: 100
     }
 }
 
