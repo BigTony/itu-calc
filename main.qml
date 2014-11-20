@@ -18,9 +18,42 @@ ApplicationWindow {
         }
     }
 
+     /*
+       Udrzuje hodnotu aktivniho gridu pro vyber operaci
+       */
+    property int activeGrid: 0
+
+    /*
+      Funkce pro zmenu nastaveni viditelnosti gridu pro vyber operaci
+      vola se u kazdeho kliknuti na button v gridu, pokud je to button
+      pro zmenu operaci tak se zmeni viditelnost gridu.
+      @switchOp = bool jestli menime grid nebo ne
+      @gridNumber = cislo gridu ktery nastavujeme na viditelny
+      */
+    function switchGrids(switchOp,gridNumber){
+        if(switchOp){
+            gridViews[activeGrid].visible = false
+            gridViews[gridNumber].visible = true
+            activeGrid = textObject
+        }
+    }
+
 Rectangle{
     anchors.fill: parent
     id: mainRect
+
+    Keys.onPressed: {
+        if (event.key == Qt.Key_Q) {
+            console.log('Key q was pressed');
+            event.accepted = true;
+        }else if (event.key == Qt.Key_W) {
+            console.log('Key wwas pressed');
+            event.accepted = true;
+        }else if (event.key == Qt.Key_E) {
+            console.log('Key e was pressed');
+            event.accepted = true;
+        }
+    }
 
     Button {
         id: button1
@@ -171,11 +204,7 @@ Rectangle{
                         onPressed: buttonObject.state = "PRESSED"
                         onReleased: buttonObject.state = "RELEASED"
                         onClicked: {
-                            if(switchOp){
-                                gridViews[activeGrid].visible = false
-                                gridViews[gridNumber].visible = true
-                                activeGrid = textObject
-                            }
+                            switchGrids(switchOp,gridNumber)
                            console.log(textObject)
                         }
                     }
@@ -215,20 +244,12 @@ Rectangle{
             }
         }
 
-     property int activeGrid: 0
-
     property list<GridView> gridViews: [
          GridView {
              parent: mainRect
              model:mainMenu
              delegate: menuDelegate
              focus: true
-             Keys.onPressed: {
-                 if (event.key == Qt.Key_Q) {
-                         console.log('Key q was pressed');
-                         event.accepted = true;
-                 }
-             }
 
              id: gridView1
              visible: true
@@ -244,12 +265,7 @@ Rectangle{
             model:integraly
             delegate: menuDelegate
             focus: true
-            Keys.onPressed: {
-                if (event.key == Qt.Key_Q) {
-                    console.log('Key q was pressed');
-                    event.accepted = true;
-                }
-            }
+
           visible: false
          id: integralyGrid
          x: 46
