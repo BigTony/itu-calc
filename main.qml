@@ -38,6 +38,25 @@ ApplicationWindow {
         }
     }
 
+    /*
+      Funkce pro zkratky, podle dane zkratky bud meni aktivni grid
+      nebo aktivuje dany button pro danou operaci
+      @shortCut = string zkratka ktera byla zmacknuta
+      */
+    function findModelShortCut(shortCut){
+        var c = 0
+        var elementCount = gridViews[activeGrid].model.count
+        while(c <= elementCount){
+            if(gridViews[activeGrid].model.get(c).name == shortCut){
+                switchGrids(gridViews[activeGrid].model.get(c).switchOp,gridViews[activeGrid].model.get(c).gridNumber)
+               console.log(gridViews[activeGrid].model.get(c).textObject)
+                return
+            }else
+                c++
+        }
+    }
+
+
 Rectangle{
     anchors.fill: parent
     id: mainRect
@@ -45,12 +64,54 @@ Rectangle{
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
             console.log('Key q was pressed');
+            findModelShortCut("q")
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
-            console.log('Key wwas pressed');
+            console.log('Key w was pressed');
+            findModelShortCut("w")
             event.accepted = true;
         }else if (event.key == Qt.Key_E) {
             console.log('Key e was pressed');
+            findModelShortCut("e")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_A) {
+            console.log('Key e was pressed');
+            findModelShortCut("a")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_S) {
+            console.log('Key e was pressed');
+            findModelShortCut("s")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_D) {
+            console.log('Key e was pressed');
+            findModelShortCut("d")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_Z) {
+            console.log('Key e was pressed');
+            findModelShortCut("z")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_X) {
+            console.log('Key e was pressed');
+            findModelShortCut("x")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_C) {
+            console.log('Key e was pressed');
+            findModelShortCut("c")
+            event.accepted = true;
+        // zpet na main grid
+        }else if (event.key == Qt.Key_B) {
+            console.log('Key b was pressed');
+            gridViews[activeGrid].visible = false
+            gridViews[0].visible = true
+            activeGrid = 0
+            event.accepted = true;
+        }else if ((event.key == Qt.Key_1) && (event.modifiers & Qt.ControlModifier)){
+            console.log('Key Ctrl+1 wass pressed');
+            findModelShortCut("Ctrl+1")
+            event.accepted = true;
+        }else if ((event.key == Qt.Key_2) && (event.modifiers & Qt.ControlModifier)){
+            console.log('Key Ctrl+2 was pressed');
+            findModelShortCut("Ctrl+2")
             event.accepted = true;
         }
     }
@@ -85,7 +146,7 @@ Rectangle{
     ListModel {
             id:mainMenu
             ListElement{
-                name: "Zakladni operatory"
+                name: "Ctrl+1"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "\u2A1B"
@@ -93,7 +154,7 @@ Rectangle{
 
             ListElement{
                 switchOp: true
-                name: "Integraly"
+                name: "Ctrl+2"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "Int"
@@ -136,42 +197,42 @@ Rectangle{
             }
 
             ListElement {
-                name: "Four"
+                name: "a"
                 colorCode: "grey"
                 textObject: "4"
                 labelObject: "4"
             }
 
             ListElement {
-                name: "Green"
+                name: "s"
                 colorCode: "grey"
                 textObject: "5"
                 labelObject: "5"
             }
 
             ListElement {
-                name: "Green"
+                name: "d"
                 colorCode: "grey"
                 textObject: "6"
                 labelObject: "6"
             }
 
             ListElement {
-                name: "Green"
+                name: "z"
                 colorCode: "grey"
                 textObject: "7"
                 labelObject: "7"
             }
 
             ListElement {
-                name: "Green"
+                name: "x"
                 colorCode: "grey"
                 textObject: "8"
                 labelObject: "8"
             }
 
             ListElement {
-                name: "Green"
+                name: "c"
                 colorCode: "grey"
                 textObject: "9"
                 labelObject: "9"
@@ -181,6 +242,7 @@ Rectangle{
      Component {
             id: menuDelegate
             Column {
+                id: columnId
                 Rectangle {
                     id: buttonObject
                     state: "RELEASED"
