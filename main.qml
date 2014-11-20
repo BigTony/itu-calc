@@ -60,7 +60,7 @@ ApplicationWindow {
 Rectangle{
     anchors.fill: parent
     id: mainRect
-
+    // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
             console.log('Key q was pressed');
@@ -99,6 +99,8 @@ Rectangle{
             findModelShortCut("c")
             event.accepted = true;
         // zpet na main grid
+       // jako Back button
+       // TODO: aktivovat animaci
         }else if (event.key == Qt.Key_B) {
             console.log('Key b was pressed');
             gridViews[activeGrid].visible = false
