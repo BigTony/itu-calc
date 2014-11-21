@@ -1,7 +1,8 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
-import "MathObj.qml"
+
+
 
 ApplicationWindow {
     visible: true
@@ -20,6 +21,10 @@ ApplicationWindow {
         }
     }
 
+    MathObj{
+
+    }
+
 
     property int activeGrid: 0
 
@@ -35,6 +40,7 @@ ApplicationWindow {
             gridViews[activeGrid].visible = false
             gridViews[gridNumber].visible = true
             activeGrid = gridNumber
+            btnBack.visible=true
         }
     }
 
@@ -106,6 +112,7 @@ Rectangle{
             gridViews[activeGrid].visible = false
             gridViews[0].visible = true
             activeGrid = 0
+            btnBack.visible=false
             event.accepted = true;
         }else if ((event.key == Qt.Key_1) && (event.modifiers & Qt.ControlModifier)){
             console.log('Key Ctrl+1 wass pressed');
@@ -331,11 +338,8 @@ Rectangle{
                         onPressed: buttonObject.state = "PRESSED"
                         onReleased: buttonObject.state = "RELEASED"
                         onClicked: {
-                            //switchGrids(switchOp,gridNumber)
-                            gridViews[activeGrid].visible = false
-                            gridViews[gridNumber].visible = true
-                            activeGrid = textObject
-                            btnBack.visible=true
+                            switchGrids(switchOp,gridNumber)
+
                             console.log(textObject)
                         }
                     }
