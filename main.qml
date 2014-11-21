@@ -21,10 +21,6 @@ ApplicationWindow {
         }
     }
 
-    MathObj{
-
-    }
-
 
     property int activeGrid: 0
 
@@ -124,6 +120,7 @@ Rectangle{
             event.accepted = true;
         }
     }
+
     MathObj {
          x: 300
          y: 300
