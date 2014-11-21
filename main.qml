@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
+import "MathObj.qml"
 
 ApplicationWindow {
     visible: true
@@ -19,9 +20,7 @@ ApplicationWindow {
         }
     }
 
-     /*
-       Udrzuje hodnotu aktivniho gridu pro vyber operaci
-       */
+
     property int activeGrid: 0
 
     /*
@@ -117,6 +116,10 @@ Rectangle{
             findModelShortCut("Ctrl+2")
             event.accepted = true;
         }
+    }
+    MathObj {
+         x: 300
+         y: 300
     }
 
     Button {

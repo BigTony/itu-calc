@@ -7,7 +7,10 @@ SOURCES += main.cpp
 RESOURCES += qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+QML_IMPORT_PATH = qrc://
 
 # Default rules for deployment.
 include(deployment.pri)
+
+OTHER_FILES += \
+    MathObj.qml
