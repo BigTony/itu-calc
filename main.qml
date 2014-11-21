@@ -344,7 +344,7 @@ ListModel {
             ListElement{
                 switchOp: true
                 name: "Ctrl+1"
-                colorCode: "grey"
+                colorCode: "#09c300"
                 textObject: "1"
                 labelObject: "+\u2212\u00D7\u00F7"
                 gridNumber: 1
@@ -353,7 +353,7 @@ ListModel {
             ListElement{
                 switchOp: true
                 name: "Ctrl+2"
-                colorCode: "grey"
+                colorCode: "#09c300"
                 textObject: "2"
                 labelObject: "\u2A1B"
                 gridNumber: 2
@@ -362,7 +362,7 @@ ListModel {
             ListElement{
                 switchOp: true
                 name: "Ctrl+3"
-                colorCode: "grey"
+                colorCode: "#09c300"
                 textObject: "3"
                 labelObject: "log"
                 gridNumber: 3
@@ -371,7 +371,7 @@ ListModel {
             ListElement{
                 switchOp: true
                 name: "Ctrl+4"
-                colorCode: "grey"
+                colorCode: "#09c300"
                 textObject: "4"
                 labelObject: "Více"
                 gridNumber: 4
