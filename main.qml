@@ -2,11 +2,6 @@ import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d804b8cc045ecdc96283c8f0f8f85c7b4ae81f25
-
 ApplicationWindow {
     visible: true
     width: 1024
@@ -140,6 +135,7 @@ Rectangle{
             y: 200
             objType: "OMG"
         }
+    }
 
 
     Button {
@@ -484,3 +480,4 @@ Rectangle{
          }
    ]
 }
+
