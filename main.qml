@@ -66,6 +66,11 @@ Rectangle{
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
             console.log('Key q was pressed');
+//            console.log(gridView1.count)
+//            gridView1.moveCurrentIndexDown()
+//            console.log(gridView1.currentItem.)
+//            console.log(gridView1.currentIndex)
+
             findModelShortCut("q")
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
@@ -308,8 +313,10 @@ Rectangle{
 
      Component {
             id: menuDelegate
+
             Column {
                 id: columnId
+                x: 40
                 Rectangle {
                     id: buttonObject
                     state: "RELEASED"
@@ -330,10 +337,13 @@ Rectangle{
                     }
 
                     MouseArea{
+                        hoverEnabled: true
                         id: mouseAreaGridView1
                         anchors.fill: parent
                         onPressed: buttonObject.state = "PRESSED"
                         onReleased: buttonObject.state = "RELEASED"
+                        onEntered: buttonObject.state = "HOVER"
+                        onExited: buttonObject.state = "RELEASED"
                         onClicked: {
                             switchGrids(switchOp,gridNumber)
 
@@ -349,7 +359,11 @@ Rectangle{
                              State {
                                  name: "RELEASED"
                                  PropertyChanges { target: buttonObject; color: "grey"}
-                             }
+                             },
+                            State {
+                                name: "HOVER"
+                                PropertyChanges { target: buttonObject; border.color: "red"}
+                            }
                     ]
 
                     transitions: [
@@ -387,12 +401,7 @@ Rectangle{
              model:mainMenu
              delegate: menuDelegate
              focus: true
-             Keys.onPressed: {
-                 if (event.key == Qt.Key_Q) {
-                         console.log('Key q was pressed');
-                         event.accepted = true;
-                 }
-             }
+
 
              id: gridView1
              visible: true
@@ -409,12 +418,7 @@ Rectangle{
                    model:zaklOp
                    delegate: menuDelegate
                    focus: true
-                   Keys.onPressed: {
-                          if (event.key == Qt.Key_Q) {
-                              console.log('Key q was pressed');
-                              event.accepted = true;
-                          }
-                   }
+
                    visible: false
                    id: zaklOpGrid
                    x: 46
@@ -430,12 +434,7 @@ Rectangle{
              model:integraly
              delegate: menuDelegate
              focus: true
-             Keys.onPressed: {
-                 if (event.key == Qt.Key_Q) {
-                     console.log('Key q was pressed');
-                     event.accepted = true;
-                 }
-             }
+
            visible: false
           id: integralyGrid
           x: 46
@@ -451,12 +450,7 @@ Rectangle{
              model:logaritmy
              delegate: menuDelegate
              focus: true
-             Keys.onPressed: {
-                 if (event.key == Qt.Key_Q) {
-                     console.log('Key q was pressed');
-                     event.accepted = true;
-                 }
-             }
+
            visible: false
           id: logaritmyGrid
           x: 46
