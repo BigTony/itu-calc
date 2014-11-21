@@ -169,7 +169,7 @@ Rectangle{
     ListModel {
         id:zaklOp
         ListElement{
-            name: "Ctrl+1"
+            name: "ZaklOp"
             colorCode: "grey"
             textObject: "zaklOp"
             labelObject: "zaklOp"
@@ -179,7 +179,7 @@ Rectangle{
     ListModel {
         id:integraly
         ListElement{
-            name: "Ctrl+2"
+            name: "Integraly"
             colorCode: "grey"
             textObject: "integral"
             labelObject: "Int"
@@ -202,7 +202,7 @@ Rectangle{
             id:mainMenu
             ListElement{
                 switchOp: true
-                name: "Zakladni operatory"
+                name: "Ctrl+1"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "\u2A1B"
@@ -211,7 +211,7 @@ Rectangle{
 
             ListElement{
                 switchOp: true
-                name: "Integraly"
+                name: "Ctrl+2"
                 colorCode: "grey"
                 textObject: "2"
                 labelObject: "Int"
