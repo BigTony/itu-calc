@@ -168,10 +168,9 @@ Rectangle{
                 activeGrid = 0
                 btnBack.visible = false
             }
+            onEntered: btnBack.opacity = 0.7
+            onExited: btnBack.opacity = 1
             hoverEnabled: true         //this line will enable mouseArea.containsMouse
-            onEntered: {
-                //console.log(tt1);
-            }
         }
         style: ButtonStyle {
 
@@ -181,7 +180,7 @@ Rectangle{
             horizontalAlignment: Text.AlignHCenter
             font.family: "Helvetica"
             font.pointSize: 12
-            color: "blue"
+            color: "black"
             text: control.text
           }
 
@@ -192,9 +191,12 @@ Rectangle{
               border.width: 0
               radius: 4
               color:  "lightsteelblue"
-              opacity: 0.3
+              opacity: 1
+
           }
         }
+
+
     }
 }
 
@@ -492,7 +494,7 @@ ListModel {
                              },
                             State {
                                 name: "HOVER"
-                                PropertyChanges { target: buttonObject; border.color: "red"; radius: 10}
+                                PropertyChanges { target: buttonObject; border.color: "red"; radius: 10; opacity: 0.8}
                             }
                     ]
 
