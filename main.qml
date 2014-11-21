@@ -484,15 +484,15 @@ ListModel {
                     states: [
                              State {
                                  name: "PRESSED"
-                                 PropertyChanges { target: buttonObject; color: "blue"}
+                                 PropertyChanges { target: buttonObject; color: "blue"; radius: 10  }
                              },
                              State {
                                  name: "RELEASED"
-                                 PropertyChanges { target: buttonObject; color: "grey"}
+                                 PropertyChanges { target: buttonObject; color: "#0198be"; radius: 10}
                              },
                             State {
                                 name: "HOVER"
-                                PropertyChanges { target: buttonObject; border.color: "red"}
+                                PropertyChanges { target: buttonObject; border.color: "red"; radius: 10}
                             }
                     ]
 
