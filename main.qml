@@ -57,9 +57,15 @@ ApplicationWindow {
     }
 
 
+
+
 Rectangle{
     anchors.fill: parent
     id: mainRect
+
+
+
+
     // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
@@ -68,6 +74,9 @@ Rectangle{
 //            gridView1.moveCurrentIndexDown()
 //            console.log(gridView1.currentItem.)
 //            console.log(gridView1.currentIndex)
+//            gridView1.model.get(4).color = "red"
+            gridViews[activeGrid].model.get(0).colorCode = "red"
+           console.log(gridViews[activeGrid].model.get(0).colorCode)
 
             findModelShortCut("q")
             event.accepted = true;
@@ -363,6 +372,7 @@ Rectangle{
                         }
                     }
 
+
                     states: [
                              State {
                                  name: "PRESSED"
@@ -374,6 +384,10 @@ Rectangle{
                              },
                             State {
                                 name: "HOVER"
+                                PropertyChanges { target: buttonObject; border.color: "red"}
+                            },
+                             State {
+                                name: "SHORTCUT"
                                 PropertyChanges { target: buttonObject; border.color: "red"}
                             }
                     ]
@@ -406,6 +420,10 @@ Rectangle{
                 spacing: 5
             }
         }
+
+     function testLog(){
+         console.log("test")
+     }
 
     property list<GridView> gridViews: [
          GridView {
