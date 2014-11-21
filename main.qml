@@ -75,7 +75,8 @@ Rectangle{
 //            console.log(gridView1.currentItem.)
 //            console.log(gridView1.currentIndex)
 //            gridView1.model.get(4).color = "red"
-            gridViews[activeGrid].model.get(0).colorCode = "red"
+//            gridViews[activeGrid].model.get(0).colorCode = "red"
+            gridView1.currentItem.focus = true
            console.log(gridViews[activeGrid].model.get(0).colorCode)
 
             findModelShortCut("q")
@@ -130,6 +131,14 @@ Rectangle{
             console.log('Key Ctrl+2 was pressed');
             findModelShortCut("Ctrl+2")
             event.accepted = true;
+        }else if ((event.key == Qt.Key_3) && (event.modifiers & Qt.ControlModifier)){
+            console.log('Key Ctrl+3 was pressed');
+            findModelShortCut("Ctrl+3")
+            event.accepted = true;
+        }else if ((event.key == Qt.Key_4) && (event.modifiers & Qt.ControlModifier)){
+            console.log('Key Ctrl+4 was pressed');
+            findModelShortCut("Ctrl+4")
+            event.accepted = true;
         }
     }
 
@@ -148,6 +157,15 @@ Rectangle{
             x: 100
             y: 200
             objType: "OMG"
+        }
+
+        Rectangle {
+            id: test
+            x: 8
+            y: 514
+            width: 314
+            height: 26
+            color: "blue"
         }
     }
 
@@ -199,73 +217,183 @@ Rectangle{
     }
 }
 
-    ListModel {
-        id:zaklOp
-        ListElement{
-            name: "ZaklOp"
-            colorCode: "grey"
-            textObject: "zaklOp"
-            labelObject: "zaklOp"
-        }
+
+ListModel {
+    id:zaklOp
+    ListElement{
+        colorCode: "grey"
+        name: "q"
+        labelObject: "+"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "w"
+        labelObject: "\u2212"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "e"
+        labelObject: "\u00D7"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "a"
+        labelObject: "\u00F7"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "s"
+        labelObject: ","
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "d"
+        labelObject: "="
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "y"
+        labelObject: "("
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "x"
+        labelObject: ")"
     }
 
-    ListModel {
-        id:integraly
-        ListElement{
-            name: "Integraly"
-            colorCode: "grey"
-            textObject: "integral"
-            labelObject: "Int"
-        }
-   }
+    ListElement{
+        colorCode: "grey"
+        name: "c"
+        labelObject: "\u00B1"
+    }
+}
 
-    ListModel {
-        id:logaritmy
-        ListElement{
-            name: "Logaritmus"
-            colorCode: "grey"
-            textObject: "logaritmus"
-            labelObject: "Log"
-        }
+ListModel {
+    id:integraly
+    ListElement{
+        colorCode: "grey"
+        name: "q"
+        labelObject: "\u222B"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "w"
+        labelObject: "\u222C"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "e"
+        labelObject: "\u222E"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "a"
+        labelObject: "\u222F"
+    }
+}
+
+ListModel {
+    id:logaritmy
+    ListElement{
+        colorCode: "grey"
+        name: "q"
+        labelObject: "log"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "w"
+        labelObject: "ln"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "e"
+        labelObject: "sin"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "a"
+        labelObject: "cos"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "s"
+        labelObject: "tan"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "d"
+        labelObject: "cotg"
+    }
+}
+
+
+
+ListModel {
+    id:ostatni
+    ListElement{
+        colorCode: "grey"
+        name: "q"
+        labelObject: "\u03A0"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "w"
+        labelObject: "\u00BD"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "e"
+        labelObject: "\u221A"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "a"
+        labelObject: "\u221B"
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "s"
+        labelObject: "\u03A3"
     }
 
-
+}
 
     ListModel {
             id:mainMenu
             ListElement{
                 switchOp: true
                 name: "Ctrl+1"
-                colorCode: "grey"
+                colorCode: "#09c300"
                 textObject: "1"
-                labelObject: "\u2A1B"
+                labelObject: "+\u2212\u00D7\u00F7"
                 gridNumber: 1
             }
 
             ListElement{
                 switchOp: true
                 name: "Ctrl+2"
-                colorCode: "grey"
+                colorCode: "#09c300"
                 textObject: "2"
-                labelObject: "Int"
+                labelObject: "\u2A1B"
                 gridNumber: 2
             }
 
             ListElement{
                 switchOp: true
-                name: "Logarimy and shit"
-                colorCode: "grey"
+                name: "Ctrl+3"
+                colorCode: "#09c300"
                 textObject: "3"
                 labelObject: "log"
                 gridNumber: 3
             }
 
             ListElement{
-                name: "Dal"
-                colorCode: "grey"
-                //textObject: "4"
-                labelObject: "MS"
-                //gridNumber: 4
+                switchOp: true
+                name: "Ctrl+4"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "Více"
+                gridNumber: 4
             }
 
             ListElement {
@@ -372,23 +500,30 @@ Rectangle{
                         }
                     }
 
+                    Keys.onPressed: {
+                             console.log(buttonObject.state)
+                    }
+
+                    PropertyChanges {
+                        target: buttonObject
+                        explicit: true
+                        color: "red"
+                        border.width: 10
+                    }
+
 
                     states: [
                              State {
                                  name: "PRESSED"
-                                 PropertyChanges { target: buttonObject; color: "blue"}
+                                 PropertyChanges { target: buttonObject; color: "blue"; radius: 10  }
                              },
                              State {
                                  name: "RELEASED"
-                                 PropertyChanges { target: buttonObject; color: "grey"}
+                                 PropertyChanges { target: buttonObject; color: "#0198be"; radius: 10}
                              },
                             State {
                                 name: "HOVER"
-                                PropertyChanges { target: buttonObject; border.color: "red"}
-                            },
-                             State {
-                                name: "SHORTCUT"
-                                PropertyChanges { target: buttonObject; border.color: "red"}
+                                PropertyChanges { target: buttonObject; border.color: "red"; radius: 10}
                             }
                     ]
 
@@ -489,7 +624,27 @@ Rectangle{
           height: 640
           cellHeight: 160
           cellWidth: 100
+         },
+
+         GridView {
+             parent: mainRect
+             model:ostatni
+             delegate: menuDelegate
+             focus: true
+             Keys.onPressed: {
+                 if (event.key == Qt.Key_Q) {
+                     console.log('Key q was pressed');
+                     event.accepted = true;
+                 }
+             }
+           visible: false
+          id: ostatniGrid
+          x: 46
+          y: 40
+          width: 400
+          height: 640
+          cellHeight: 160
+          cellWidth: 100
          }
    ]
 }
-
