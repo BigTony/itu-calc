@@ -2,8 +2,6 @@ import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 
-
-
 ApplicationWindow {
     visible: true
     width: 1024
@@ -126,10 +124,24 @@ Rectangle{
         }
     }
 
-    MathObj {
-         x: 300
-         y: 300
+    Rectangle {
+        width: 500
+        height: 500
+        id: objectArea
+        x: 0
+        color: "white"
+        border.width: 2
+        anchors.top: parent.verticalCenter
+        anchors.topMargin: -330
+        anchors.right: parent.horizontalCenter
+        anchors.rightMargin: -512
+        MathObj {
+            x: 100
+            y: 200
+            objType: "OMG"
+        }
     }
+
 
     Button {
         id: btnBack
@@ -462,3 +474,4 @@ Rectangle{
          }
    ]
 }
+
