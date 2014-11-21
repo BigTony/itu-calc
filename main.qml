@@ -1,5 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
+import QtQuick.Controls.Styles 1.2
 
 ApplicationWindow {
     visible: true
@@ -119,62 +120,119 @@ Rectangle{
     }
 
     Button {
-        id: button1
-        x: 654
-        y: 60
-        text: qsTr("Button")
+        id: btnBack
+        x: gridView1.x
+       // y: 10
+        text: qsTr("Zpět")
+        visible: false
+        width: 64
+        height: 32
+
         MouseArea{
             anchors.fill: parent
             onClicked: {
                 gridViews[activeGrid].visible = false
                 gridViews[0].visible = true
                 activeGrid = 0
+                btnBack.visible = false
             }
+            hoverEnabled: true         //this line will enable mouseArea.containsMouse
+            onEntered: {
+                //console.log(tt1);
+            }
+        }
+        style: ButtonStyle {
+
+          label: Text {
+            //renderType: Text.NativeRendering
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.family: "Helvetica"
+            font.pointSize: 12
+            color: "blue"
+            text: control.text
+          }
+
+          background: Rectangle {
+              id: tt1
+              //implicitWidth: 100
+              //implicitHeight: 25
+              border.width: 0
+              radius: 4
+              color:  "lightsteelblue"
+              opacity: 0.3
+          }
         }
     }
 }
 
     ListModel {
-            id:integraly
-            ListElement{
-                name: "Integral"
-                colorCode: "grey"
-                textObject: "integral"
-                labelObject: "Int"
-            }
-     }
+        id:zaklOp
+        ListElement{
+            name: "zaklOp"
+            colorCode: "grey"
+            textObject: "zaklOp"
+            labelObject: "zaklOp"
+        }
+    }
+
+    ListModel {
+        id:integraly
+        ListElement{
+            name: "Integral"
+            colorCode: "grey"
+            textObject: "integral"
+            labelObject: "Int"
+        }
+   }
+
+    ListModel {
+        id:logaritmy
+        ListElement{
+            name: "Logaritmus"
+            colorCode: "grey"
+            textObject: "logaritmus"
+            labelObject: "Log"
+        }
+    }
+
 
 
     ListModel {
             id:mainMenu
             ListElement{
-                name: "Ctrl+1"
+                switchOp: true
+                name: "Zakladni operatory"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "\u2A1B"
-            }
-
-            ListElement{
-                switchOp: true
-                name: "Ctrl+2"
-                colorCode: "grey"
-                textObject: "1"
-                labelObject: "Int"
                 gridNumber: 1
             }
 
             ListElement{
-                name: "Logarimy and shit"
+                switchOp: true
+                name: "Integraly"
                 colorCode: "grey"
-                textObject: "1"
-                labelObject: "LogAshit"
+                textObject: "2"
+                labelObject: "Int"
+                gridNumber: 2
             }
 
             ListElement{
-                name: "A nejakej mega shit"
+                switchOp: true
+                name: "Logarimy and shit"
                 colorCode: "grey"
-                textObject: "1"
-                labelObject: "MegaShit"
+                textObject: "3"
+                labelObject: "log"
+                gridNumber: 3
+            }
+
+            ListElement{
+                name: "Dal"
+                colorCode: "grey"
+                //textObject: "4"
+                labelObject: "MS"
+                //gridNumber: 4
             }
 
             ListElement {
@@ -254,6 +312,7 @@ Rectangle{
                     border.color: "black"
                     border.width: 2
                     anchors.horizontalCenter: parent.horizontalCenter
+
                     Text {
                         id: labelObjectText
                         anchors.centerIn: parent
@@ -262,16 +321,22 @@ Rectangle{
                         font.family: "Cambria Math"
                         font.pointSize: 20
                     }
+
                     MouseArea{
                         id: mouseAreaGridView1
                         anchors.fill: parent
                         onPressed: buttonObject.state = "PRESSED"
                         onReleased: buttonObject.state = "RELEASED"
                         onClicked: {
-                            switchGrids(switchOp,gridNumber)
-                           console.log(textObject)
+                            //switchGrids(switchOp,gridNumber)
+                            gridViews[activeGrid].visible = false
+                            gridViews[gridNumber].visible = true
+                            activeGrid = textObject
+                            btnBack.visible=true
+                            console.log(textObject)
                         }
                     }
+
                     states: [
                              State {
                                  name: "PRESSED"
@@ -282,6 +347,7 @@ Rectangle{
                                  PropertyChanges { target: buttonObject; color: "grey"}
                              }
                     ]
+
                     transitions: [
                              Transition {
                                  from: "PRESSED"
@@ -294,7 +360,9 @@ Rectangle{
                                  ColorAnimation { target: buttonObject; duration: 100}
                              }
                     ]
+
                 }
+
                 Text {
                     x: 5
                     text: name
@@ -304,6 +372,7 @@ Rectangle{
                     wrapMode: Text.Wrap
                     font.pointSize: 12
                 }
+
                 spacing: 5
             }
         }
@@ -314,31 +383,84 @@ Rectangle{
              model:mainMenu
              delegate: menuDelegate
              focus: true
+             Keys.onPressed: {
+                 if (event.key == Qt.Key_Q) {
+                         console.log('Key q was pressed');
+                         event.accepted = true;
+                 }
+             }
 
              id: gridView1
              visible: true
              x: 46
-             y: 28
+             y: 40
              width: 400
              height: 640
              cellHeight: 160
              cellWidth: 100
          },
-        GridView {
-            parent: mainRect
-            model:integraly
-            delegate: menuDelegate
-            focus: true
 
-          visible: false
-         id: integralyGrid
-         x: 46
-         y: 28
-         width: 400
-         height: 640
-         cellHeight: 160
-         cellWidth: 100
-        }
+         GridView {
+                   parent: mainRect
+                   model:zaklOp
+                   delegate: menuDelegate
+                   focus: true
+                   Keys.onPressed: {
+                          if (event.key == Qt.Key_Q) {
+                              console.log('Key q was pressed');
+                              event.accepted = true;
+                          }
+                   }
+                   visible: false
+                   id: zaklOpGrid
+                   x: 46
+                   y: 40
+                   width: 400
+                   height: 640
+                   cellHeight: 160
+                   cellWidth: 100
+         },
+
+         GridView {
+             parent: mainRect
+             model:integraly
+             delegate: menuDelegate
+             focus: true
+             Keys.onPressed: {
+                 if (event.key == Qt.Key_Q) {
+                     console.log('Key q was pressed');
+                     event.accepted = true;
+                 }
+             }
+           visible: false
+          id: integralyGrid
+          x: 46
+          y: 40
+          width: 400
+          height: 640
+          cellHeight: 160
+          cellWidth: 100
+         },
+
+         GridView {
+             parent: mainRect
+             model:logaritmy
+             delegate: menuDelegate
+             focus: true
+             Keys.onPressed: {
+                 if (event.key == Qt.Key_Q) {
+                     console.log('Key q was pressed');
+                     event.accepted = true;
+                 }
+             }
+           visible: false
+          id: logaritmyGrid
+          x: 46
+          y: 40
+          width: 400
+          height: 640
+          cellHeight: 160
+          cellWidth: 100
+         }
    ]
 }
-
