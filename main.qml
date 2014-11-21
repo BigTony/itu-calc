@@ -35,7 +35,7 @@ ApplicationWindow {
         if(switchOp){
             gridViews[activeGrid].visible = false
             gridViews[gridNumber].visible = true
-            activeGrid = textObject
+            activeGrid = gridNumber
         }
     }
 
