@@ -1,6 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
-import QtQuick.Controls.Styles 1.2
+import QtQuick.Controls.Styles 1.1
 
 ApplicationWindow {
     visible: true
@@ -169,7 +169,7 @@ Rectangle{
     ListModel {
         id:zaklOp
         ListElement{
-            name: "zaklOp"
+            name: "Ctrl+1"
             colorCode: "grey"
             textObject: "zaklOp"
             labelObject: "zaklOp"
@@ -179,7 +179,7 @@ Rectangle{
     ListModel {
         id:integraly
         ListElement{
-            name: "Integral"
+            name: "Ctrl+2"
             colorCode: "grey"
             textObject: "integral"
             labelObject: "Int"
