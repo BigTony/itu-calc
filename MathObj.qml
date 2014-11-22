@@ -1,10 +1,10 @@
 import QtQuick 2.2
-Item {
-    id: name
 
 Rectangle {
+    x: 100
+    y: 100
     id: expression
-    color: "grey"
+    color: "red"
     width: 100
     height: 60
     property string objType
@@ -25,6 +25,5 @@ Rectangle {
         id: rightBotIndex
 
     }
-}
 }
 

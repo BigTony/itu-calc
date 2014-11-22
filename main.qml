@@ -143,11 +143,12 @@ Rectangle{
         anchors.topMargin: -330
         anchors.right: parent.horizontalCenter
         anchors.rightMargin: -512
-        MathObj {
-            x: 100
-            y: 200
-           // objType: "OMG"
-        }
+        Component.onCompleted: {
+        var component = Qt.createComponent("MathObj.qml");
+            for (var i=0; i<5; i++) {
+                         var object = component.createObject(expression);
+                         object.x = (object.width + 10) * i;
+                     }}
     }
 
 
