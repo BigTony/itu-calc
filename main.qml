@@ -86,7 +86,7 @@ ApplicationWindow {
             if(gridViews[activeGrid].model.get(c).name == shortCut){
                 if(switchGrids(gridViews[activeGrid].model.get(c).switchOp,gridViews[activeGrid].model.get(c).gridNumber)){
                     return
-                }else if(textObject.toString().charCodeAt(0) > 255){
+                }else if(gridViews[activeGrid].model.get(c).special){
                     console.log("unicode")
                     console.log(textObject.toString())
                 }else{
@@ -178,10 +178,8 @@ Rectangle{
        // TODO: aktivovat animaci
         }else if (event.key == Qt.Key_B) {
             console.log('Key b was pressed');
-            gridViews[activeGrid].visible = false
-            gridViews[0].visible = true
-            activeGrid = 0
-            btnBack.visible=false
+            switchGrids(1,0)
+            btnBack.visible = false
             event.accepted = true;
         }else if ((event.key == Qt.Key_1) && (event.modifiers & Qt.ControlModifier)){
             console.log('Key Ctrl+1 wass pressed');
@@ -261,48 +259,56 @@ ListModel {
         name: "q"
         textObject: "+"
         labelObject: "+"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "w"
         labelObject: "\u2212"
         textObject: "\u2212"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "e"
         labelObject: "\u00D7"
         textObject: "\u00D7"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "a"
         labelObject: "\u00F7"
         textObject: "\u00F7"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "s"
         labelObject: ","
         textObject: ","
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "d"
         labelObject: "="
         textObject: "="
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "y"
         labelObject: "("
         textObject: "("
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "x"
         labelObject: ")"
         textObject: ")"
+        special: false
     }
 
     ListElement{
@@ -310,6 +316,7 @@ ListModel {
         name: "c"
         labelObject: "\u00B1"
         textObject: "\u00B1"
+        special: false
     }
 }
 
@@ -321,24 +328,28 @@ ListModel {
         name: "q"
         labelObject: "\u222B"
         textObject: "\u222B"
+        special: true
     }
     ListElement{
         colorCode: "grey"
         name: "w"
         labelObject: "\u222C"
         textObject: "\u222C"
+        special: true
     }
     ListElement{
         colorCode: "grey"
         name: "e"
         labelObject: "\u222E"
         textObject: "\u222E"
+        special: true
     }
     ListElement{
         colorCode: "grey"
         name: "a"
         labelObject: "\u222F"
         textObject: "\u222F"
+        special: true
     }
 }
 
@@ -350,36 +361,42 @@ ListModel {
         name: "q"
         labelObject: "log"
         textObject: "log"
+        special: true
     }
     ListElement{
         colorCode: "grey"
         name: "w"
         labelObject: "ln"
         textObject: "ln"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "e"
         labelObject: "sin"
         textObject: "sin"
+        special: true
     }
     ListElement{
         colorCode: "grey"
         name: "a"
         labelObject: "cos"
         textObject: "cos"
+        special: true
     }
     ListElement{
         colorCode: "grey"
         name: "s"
         labelObject: "tan"
         textObject: "tan"
+        special: true
     }
     ListElement{
         colorCode: "grey"
         name: "d"
         labelObject: "cotg"
         textObject: "cotg"
+        special: true
     }
 }
 
@@ -399,24 +416,28 @@ ListModel {
         name: "w"
         labelObject: "\u00BD"
         textObject: "\u00BD"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "e"
         labelObject: "\u221A"
         textObject: "\u221A"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "a"
         labelObject: "\u221B"
         textObject: "\u221B"
+        special: false
     }
     ListElement{
         colorCode: "grey"
         name: "s"
         labelObject: "\u03A3"
         textObject: "\u03A3"
+        special: false
     }
 
 }
@@ -464,6 +485,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "1"
+                special: false
             }
 
             ListElement {
@@ -471,6 +493,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "2"
                 labelObject: "2"
+                special: false
             }
 
             ListElement {
@@ -478,6 +501,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "3"
                 labelObject: "3"
+                special: false
             }
 
             ListElement {
@@ -485,6 +509,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "4"
                 labelObject: "4"
+                special: false
             }
 
             ListElement {
@@ -492,6 +517,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "5"
                 labelObject: "5"
+                special: false
             }
 
             ListElement {
@@ -499,6 +525,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "6"
                 labelObject: "6"
+                special: false
             }
 
             ListElement {
@@ -506,6 +533,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "7"
                 labelObject: "7"
+                special: false
             }
 
             ListElement {
@@ -513,6 +541,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "8"
                 labelObject: "8"
+                special: false
             }
 
             ListElement {
@@ -520,6 +549,7 @@ ListModel {
                 colorCode: "grey"
                 textObject: "9"
                 labelObject: "9"
+                special: false
             }
         }
 
@@ -559,7 +589,7 @@ ListModel {
                         onClicked: {
                             if(switchOp){
                                 switchGrids(switchOp,gridNumber)
-                            }else if(textObject.toString().charCodeAt(0) > 255){
+                            }else if(textObject.special){
                                 console.log("unicode")
                                 console.log(textObject.toString())
                             }else{
