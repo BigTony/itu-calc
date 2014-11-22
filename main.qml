@@ -90,7 +90,7 @@ ApplicationWindow {
                     console.log("unicode")
                     console.log(gridViews[activeGrid].model.get(c).textObject.toString())
                 }else{
-                    console.log(textObject.toString())
+                    console.log(gridViews[activeGrid].model.get(c).textObject.toString())
                 }
                 return
             }else
