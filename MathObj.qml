@@ -1,7 +1,10 @@
 import QtQuick 2.2
+Item {
+    id: name
 
 Rectangle {
-    color: "red"
+    id: expression
+    color: "grey"
     width: 100
     height: 60
     property string objType
@@ -23,5 +26,5 @@ Rectangle {
 
     }
 }
-
+}
 

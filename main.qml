@@ -133,7 +133,7 @@ Rectangle{
         MathObj {
             x: 100
             y: 200
-            objType: "OMG"
+           // objType: "OMG"
         }
     }
 
