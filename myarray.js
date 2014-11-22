@@ -1,5 +1,5 @@
  // myarray.js
-var activeObj = -1;
+var activeObj = 0;
 var objArray = new Array();
 var lineArray = new Array();
 

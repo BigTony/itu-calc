@@ -1,16 +1,15 @@
 import QtQuick 2.2
-
-
+import "myarray.js" as Script
 
 Rectangle {
-    x: 0
-    y: 0
+    property int p: 0
     id: expression
     color: "red"
-    width: 100
-    height: 60
+    width: 60
+    height: 20
     property string objType
-
+    function addIndex (index){}
+    function delIndex (index){}
     Rectangle {
         id: leftTopIndex
 
@@ -28,6 +27,12 @@ Rectangle {
         id: rightBotIndex
 
     }
-
+    Rectangle{
+        x: 0
+        y: 0
+        width:20
+        height:20
+        color:"blue"
+    }
 }
 
