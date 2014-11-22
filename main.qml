@@ -10,15 +10,45 @@ ApplicationWindow {
     title: qsTr("Hello World")
     id: mainWin
 
-    menuBar: MenuBar {
-        Menu {
-            title: qsTr("File")
-            MenuItem {
-                text: qsTr("Exit")
-                onTriggered: Qt.quit();
-            }
-        }
-    }
+    property string theme: "" // basic
+
+
+       menuBar: MenuBar {
+           Menu {
+               title: qsTr("File")
+               MenuItem {
+                   text: qsTr("Exit")
+                   onTriggered: Qt.quit();
+               }
+
+               MenuSeparator { }
+
+           }
+           Menu {
+               title: "Změna stylu"
+               MenuItem {
+                   text: qsTr("Original")
+                   onTriggered: theme = ""
+               }
+               MenuItem {
+                   text: qsTr("Hellou Kitty")
+                   onTriggered: theme = "2.png"
+               }
+               MenuItem {
+                   text: qsTr("das")
+                   onTriggered: theme = "3.png"
+               }
+               MenuItem {
+                   text: qsTr("das")
+                   onTriggered: theme = "4.png"
+               }
+               MenuItem {
+                   text: qsTr("das")
+                   onTriggered: theme = "5.png"
+               }
+           }
+       }
+
 
 
     property int activeGrid: 0
@@ -76,8 +106,24 @@ Rectangle{
     id: mainRect
 
 
+    //TODO: STYLY ZDE
+    gradient: Gradient {
+        GradientStop {
+            position: 0
+            color: "#ffffff"
+        }
 
-
+        GradientStop {
+            position: 1
+            color: "#bee07b"
+        }
+    }
+    Image {
+        anchors.fill: parent
+        //width: 130; height: 100
+        smooth: true
+        source: "qrc:///bg/"+theme
+    }
 
 
     // TODO: aktivovat animace na buttonec
