@@ -13,4 +13,6 @@ QML_IMPORT_PATH = qrc://
 include(deployment.pri)
 
 OTHER_FILES += \
-    MathObj.qml
+    MathObj.qml \
+    ObjManager.qml \
+    myarray.js

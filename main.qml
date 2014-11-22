@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
+import "myarray.js" as Script
 
 ApplicationWindow {
     visible: true
@@ -132,24 +133,7 @@ Rectangle{
         }
     }
 
-    Rectangle {
-        width: 500
-        height: 500
-        id: objectArea
-        x: 0
-        color: "white"
-        border.width: 2
-        anchors.top: parent.verticalCenter
-        anchors.topMargin: -330
-        anchors.right: parent.horizontalCenter
-        anchors.rightMargin: -512
-        Component.onCompleted: {
-        var component = Qt.createComponent("MathObj.qml");
-            for (var i=0; i<5; i++) {
-                         var object = component.createObject(expression);
-                         object.x = (object.width + 10) * i;
-                     }}
-    }
+    ObjManager{}
 
 
     Button {

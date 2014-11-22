@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>MathObj.qml</file>
+        <file>myarray.js</file>
+        <file>ObjManager.qml</file>
     </qresource>
 </RCC>

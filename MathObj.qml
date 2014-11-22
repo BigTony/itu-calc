@@ -1,5 +1,7 @@
 import QtQuick 2.2
 
+
+
 Rectangle {
     x: 100
     y: 100
@@ -11,6 +13,7 @@ Rectangle {
 
     Rectangle {
         id: leftTopIndex
+
 
     }
     Rectangle {
@@ -25,5 +28,6 @@ Rectangle {
         id: rightBotIndex
 
     }
+
 }
 
