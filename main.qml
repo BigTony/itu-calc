@@ -61,7 +61,7 @@ ApplicationWindow {
       @gridNumber = cislo gridu ktery nastavujeme na viditelny
       */
     function switchGrids(switchOp,gridNumber){
-        if(switchOp){
+        if(switchOp && (gridNumber < 6)){
             gridViews[activeGrid].state = "FADE"
             gridViews[gridNumber].visible = true
             gridViews[gridNumber].state = "SHOW"
@@ -541,10 +541,8 @@ ListModel {
     }
 }
 
-
-
 ListModel {
-    id:ostatni
+    id:mocodmoc
     ListElement{
         colorCode: "grey"
         name: "q"
@@ -583,11 +581,69 @@ ListModel {
 
 }
 
+ListModel {
+    id: zavorky
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "q"
+        labelObject: "("
+        textObject: "("
+        special: false
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "w"
+        labelObject: ")"
+        textObject: ")"
+        special: false
+    }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "e"
+            labelObject: "["
+            textObject: "]"
+            special: false
+        }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "r"
+            labelObject: "]"
+            textObject: "]"
+            special: false
+        }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "a"
+            labelObject: "{"
+            textObject: "{"
+            special: false
+        }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "s"
+            labelObject: "}"
+            textObject: "}"
+            special: false
+        }
+}
+
+
     ListModel {
             id:mainMenu
             ListElement{
                 switchOp: true
-                name: "Ctrl+1"
+                name: "q"
                 colorCode: "#09c300"
                 textObject: "1"
                 labelObject: "+\u2212\u00D7\u00F7"
@@ -596,16 +652,16 @@ ListModel {
 
             ListElement{
                 switchOp: true
-                name: "Ctrl+2"
+                name: "w"
                 colorCode: "#09c300"
                 textObject: "2"
-                labelObject: "\u2A1B"
+                labelObject: "\u222B \u25A1"
                 gridNumber: 2
             }
 
             ListElement{
                 switchOp: true
-                name: "Ctrl+3"
+                name: "e"
                 colorCode: "#09c300"
                 textObject: "3"
                 labelObject: "sin \u25A1"
@@ -614,15 +670,51 @@ ListModel {
 
             ListElement{
                 switchOp: true
-                name: "Ctrl+4"
+                name: "r"
                 colorCode: "#09c300"
                 textObject: "4"
-                labelObject: "Více"
+                labelObject: "MO"
                 gridNumber: 4
             }
 
+            ListElement{
+                switchOp: true
+                name: "a"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "()[]"
+                gridNumber: 5
+            }
+
+            ListElement{
+                switchOp: true
+                name: "s"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "\u2211"
+                gridNumber: 6
+            }
+
+            ListElement{
+                switchOp: true
+                name: "d"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "log"
+                gridNumber: 7
+            }
+
+            ListElement{
+                switchOp: true
+                name: "f"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "\u03BB \u03B5 \u03C0"
+                gridNumber: 8
+            }
+
             ListElement {
-                name: "q"
+                name: "z"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "1"
@@ -630,7 +722,7 @@ ListModel {
             }
 
             ListElement {
-                name: "w"
+                name: "x"
                 colorCode: "grey"
                 textObject: "2"
                 labelObject: "2"
@@ -638,7 +730,7 @@ ListModel {
             }
 
             ListElement {
-                name: "e"
+                name: "c"
                 colorCode: "grey"
                 textObject: "3"
                 labelObject: "3"
@@ -646,52 +738,14 @@ ListModel {
             }
 
             ListElement {
-                name: "a"
+                name: "v"
                 colorCode: "grey"
                 textObject: "4"
                 labelObject: "4"
                 special: false
             }
 
-            ListElement {
-                name: "s"
-                colorCode: "grey"
-                textObject: "5"
-                labelObject: "5"
-                special: false
-            }
 
-            ListElement {
-                name: "d"
-                colorCode: "grey"
-                textObject: "6"
-                labelObject: "6"
-                special: false
-            }
-
-            ListElement {
-                name: "z"
-                colorCode: "grey"
-                textObject: "7"
-                labelObject: "7"
-                special: false
-            }
-
-            ListElement {
-                name: "x"
-                colorCode: "grey"
-                textObject: "8"
-                labelObject: "8"
-                special: false
-            }
-
-            ListElement {
-                name: "c"
-                colorCode: "grey"
-                textObject: "9"
-                labelObject: "9"
-                special: false
-            }
         }
 
      Component {
@@ -729,7 +783,9 @@ ListModel {
                         onExited: buttonObject.state = "RELEASED"
                         onClicked: {
                             if(switchOp){
-                                switchGrids(switchOp,gridNumber)
+                                if(gridNumber < 5){
+                                    switchGrids(switchOp,gridNumber)
+                                }
                             }else if(textObject.special){
                                 console.log("unicode")
                                 console.log(textObject.toString())
@@ -950,11 +1006,11 @@ ListModel {
 
          GridView {
              parent: mainRect
-             model:ostatni
+             model:mocodmoc
              delegate: menuDelegate
              focus: true
            visible: false
-          id: ostatniGrid
+          id: mocodmocGrid
           x: 46
           y: 40
           width: 400
@@ -968,11 +1024,47 @@ ListModel {
           states: [
               State {
                   name: "FADE"
-                  PropertyChanges {target: ostatniGrid; scale: 0.1; opacity: 0}
+                  PropertyChanges {target: mocodmocGrid; scale: 0.1; opacity: 0}
              },
               State {
                   name: "SHOW"
-                  PropertyChanges {target: ostatniGrid; scale: 1; opacity: 1}
+                  PropertyChanges {target: mocodmocGrid; scale: 1; opacity: 1}
+              }
+
+          ]
+
+          transitions: [
+              Transition {
+                 PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+              }
+          ]
+         },
+
+         GridView {
+             parent: mainRect
+             model:zavorky
+             delegate: menuDelegate
+             focus: true
+           visible: false
+          id: zavorkyGrid
+          x: 46
+          y: 40
+          width: 400
+          height: 640
+          cellHeight: 160
+          cellWidth: 100
+          state: "FADE"
+          scale: 0.1
+          opacity: 0
+
+          states: [
+              State {
+                  name: "FADE"
+                  PropertyChanges {target: zavorkyGrid; scale: 0.1; opacity: 0}
+             },
+              State {
+                  name: "SHOW"
+                  PropertyChanges {target: zavorkyGrid; scale: 1; opacity: 1}
               }
 
           ]
