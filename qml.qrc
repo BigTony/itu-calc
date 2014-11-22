@@ -4,5 +4,6 @@
         <file>MathObj.qml</file>
         <file>myarray.js</file>
         <file>ObjManager.qml</file>
+        <file>Line.qml</file>
     </qresource>
 </RCC>

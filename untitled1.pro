@@ -15,4 +15,5 @@ include(deployment.pri)
 OTHER_FILES += \
     MathObj.qml \
     ObjManager.qml \
+    Line.qml\
     myarray.js
