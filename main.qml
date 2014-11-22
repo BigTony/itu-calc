@@ -142,8 +142,10 @@ Rectangle{
             findModelShortCut("q")
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
+            manager.test();
             console.log('Key w was pressed');
             findModelShortCut("w")
+
             event.accepted = true;
         }else if (event.key == Qt.Key_E) {
             console.log('Key e was pressed');
@@ -213,7 +215,7 @@ Rectangle{
     }
 
 
-    ObjManager{}
+    ObjManager{id:manager}
 
     Button {
         id: btnBack
