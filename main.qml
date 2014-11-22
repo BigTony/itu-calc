@@ -149,6 +149,10 @@ Rectangle{
             console.log('Key e was pressed');
             findModelShortCut("e")
             event.accepted = true;
+        }else if (event.key == Qt.Key_R) {
+            console.log('Key r was pressed');
+            findModelShortCut("r")
+            event.accepted = true;
         }else if (event.key == Qt.Key_A) {
             console.log('Key e was pressed');
             findModelShortCut("a")
@@ -160,6 +164,10 @@ Rectangle{
         }else if (event.key == Qt.Key_D) {
             console.log('Key e was pressed');
             findModelShortCut("d")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_F) {
+            console.log('Key f was pressed');
+            findModelShortCut("f")
             event.accepted = true;
         }else if (event.key == Qt.Key_Z) {
             console.log('Key e was pressed');
@@ -176,6 +184,10 @@ Rectangle{
         // zpet na main grid
        // jako Back button
        // TODO: aktivovat animaci
+        }else if (event.key == Qt.Key_V) {
+            console.log('Key v was pressed');
+            findModelShortCut("v")
+            event.accepted = true;
         }else if (event.key == Qt.Key_B) {
             console.log('Key b was pressed');
             switchGrids(1,0)
@@ -277,16 +289,23 @@ ListModel {
     }
     ListElement{
         colorCode: "grey"
-        name: "a"
+        name: "r"
         labelObject: "\u00F7"
         textObject: "\u00F7"
         special: false
     }
     ListElement{
         colorCode: "grey"
+        name: "a"
+        labelObject: ">"
+        textObject: ">"
+        special: false
+    }
+    ListElement{
+        colorCode: "grey"
         name: "s"
-        labelObject: ","
-        textObject: ","
+        labelObject: "<"
+        textObject: "<"
         special: false
     }
     ListElement{
@@ -298,24 +317,41 @@ ListModel {
     }
     ListElement{
         colorCode: "grey"
-        name: "y"
-        labelObject: "("
-        textObject: "("
+        name: "f"
+        labelObject: "\u00AC"
+        textObject: "\u00AC"
         special: false
     }
+
+    ListElement{
+        colorCode: "grey"
+        name: "z"
+        labelObject: "\u00B1"
+        textObject: "\u00B1"
+        special: false
+    }
+
     ListElement{
         colorCode: "grey"
         name: "x"
-        labelObject: ")"
-        textObject: ")"
+        labelObject: "\u2205"
+        textObject: "\u2205"
         special: false
     }
 
     ListElement{
         colorCode: "grey"
         name: "c"
-        labelObject: "\u00B1"
-        textObject: "\u00B1"
+        labelObject: "\u2264"
+        textObject: "\u2264"
+        special: false
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "v"
+        labelObject: "\u2265"
+        textObject: "\u2265"
         special: false
     }
 }
@@ -359,43 +395,91 @@ ListModel {
         switchOp: false
         colorCode: "grey"
         name: "q"
-        labelObject: "log"
-        textObject: "log"
+        labelObject: "sin \u25A1"
+        textObject: "sin \u25A1"
         special: true
     }
     ListElement{
         colorCode: "grey"
         name: "w"
-        labelObject: "ln"
-        textObject: "ln"
+        labelObject: "cos \u25A1"
+        textObject: "cos \u25A1"
         special: false
     }
     ListElement{
         colorCode: "grey"
         name: "e"
-        labelObject: "sin"
-        textObject: "sin"
+        labelObject: "tan \u25A1"
+        textObject: "tan \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "r"
+        labelObject: "cot \u25A1"
+        textObject: "cot \u25A1"
         special: true
     }
     ListElement{
         colorCode: "grey"
         name: "a"
-        labelObject: "cos"
-        textObject: "cos"
+        labelObject: "sec \u25A1"
+        textObject: "sec \u25A1"
         special: true
     }
     ListElement{
         colorCode: "grey"
         name: "s"
-        labelObject: "tan"
-        textObject: "tan"
+        labelObject: "csc \u25A1"
+        textObject: "csc \u25A1"
         special: true
     }
+
     ListElement{
         colorCode: "grey"
         name: "d"
-        labelObject: "cotg"
-        textObject: "cotg"
+        labelObject: "sinh \u25A1"
+        textObject: "sinh \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "f"
+        labelObject: "cosh \u25A1"
+        textObject: "cosh \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "z"
+        labelObject: "tanh \u25A1"
+        textObject: "tanh \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "x"
+        labelObject: "csch \u25A1"
+        textObject: "csch \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "c"
+        labelObject: "sech \u25A1"
+        textObject: "sech \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "v"
+        labelObject: "coth \u25A1"
+        textObject: "coth \u25A1"
         special: true
     }
 }
