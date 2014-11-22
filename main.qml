@@ -32,8 +32,11 @@ ApplicationWindow {
       */
     function switchGrids(switchOp,gridNumber){
         if(switchOp){
-            gridViews[activeGrid].visible = false
+            gridViews[activeGrid].state = "FADE"
             gridViews[gridNumber].visible = true
+            gridViews[gridNumber].state = "SHOW"
+//            gridViews[activeGrid].visible = false
+//            gridViews[gridNumber].visible = true
             activeGrid = gridNumber
             btnBack.visible=true
         }
@@ -58,9 +61,17 @@ ApplicationWindow {
     }
 
 
+
+
 Rectangle{
     anchors.fill: parent
     id: mainRect
+
+
+
+
+
+
     // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
@@ -69,6 +80,10 @@ Rectangle{
 //            gridView1.moveCurrentIndexDown()
 //            console.log(gridView1.currentItem.)
 //            console.log(gridView1.currentIndex)
+//            gridView1.model.get(4).color = "red"
+//            gridViews[activeGrid].model.get(0).colorCode = "red"
+            gridView1.currentItem.focus = true
+           console.log(gridViews[activeGrid].model.get(0).colorCode)
 
             findModelShortCut("q")
             event.accepted = true;
@@ -133,8 +148,8 @@ Rectangle{
         }
     }
 
-    ObjManager{}
 
+    ObjManager{}
 
     Button {
         id: btnBack
@@ -148,9 +163,7 @@ Rectangle{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                gridViews[activeGrid].visible = false
-                gridViews[0].visible = true
-                activeGrid = 0
+                switchGrids(1,0)
                 btnBack.visible = false
             }
             onEntered: btnBack.opacity = 0.7
@@ -189,8 +202,10 @@ Rectangle{
 ListModel {
     id:zaklOp
     ListElement{
+        switchOp: false
         colorCode: "grey"
         name: "q"
+        textObject: "+"
         labelObject: "+"
     }
     ListElement{
@@ -239,6 +254,7 @@ ListModel {
 ListModel {
     id:integraly
     ListElement{
+        switchOp: false
         colorCode: "grey"
         name: "q"
         labelObject: "\u222B"
@@ -263,6 +279,7 @@ ListModel {
 ListModel {
     id:logaritmy
     ListElement{
+        switchOp: false
         colorCode: "grey"
         name: "q"
         labelObject: "log"
@@ -302,6 +319,7 @@ ListModel {
         colorCode: "grey"
         name: "q"
         labelObject: "\u03A0"
+        switchOp: false
     }
     ListElement{
         colorCode: "grey"
@@ -462,11 +480,24 @@ ListModel {
                         onEntered: buttonObject.state = "HOVER"
                         onExited: buttonObject.state = "RELEASED"
                         onClicked: {
-                            switchGrids(switchOp,gridNumber)
-
+                            if(switchOp){
+                                switchGrids(switchOp,gridNumber)
+                            }
                             console.log(textObject)
                         }
                     }
+
+                    Keys.onPressed: {
+                             console.log(buttonObject.state)
+                    }
+
+                    PropertyChanges {
+                        target: buttonObject
+                        explicit: true
+                        color: "red"
+                        border.width: 10
+                    }
+
 
                     states: [
                              State {
@@ -512,6 +543,10 @@ ListModel {
             }
         }
 
+     function testLog(){
+         console.log("test")
+     }
+
     property list<GridView> gridViews: [
          GridView {
              parent: mainRect
@@ -519,7 +554,7 @@ ListModel {
              delegate: menuDelegate
              focus: true
 
-
+             state: "SHOW"
              id: gridView1
              visible: true
              x: 46
@@ -528,6 +563,24 @@ ListModel {
              height: 640
              cellHeight: 160
              cellWidth: 100
+
+             states: [
+                 State {
+                     name: "FADE"
+                     PropertyChanges {target: gridView1; scale: 0.1; opacity: 0}
+                },
+                 State {
+                     name: "SHOW"
+                     PropertyChanges {target: gridView1; scale: 1; opacity: 1}
+                 }
+
+             ]
+
+             transitions: [
+                 Transition {
+                    PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+                 }
+             ]
          },
 
          GridView {
@@ -544,6 +597,27 @@ ListModel {
                    height: 640
                    cellHeight: 160
                    cellWidth: 100
+                   state: "FADE"
+                   scale: 0.1
+                   opacity: 0
+
+                   states: [
+                       State {
+                           name: "FADE"
+                           PropertyChanges {target: zaklOpGrid; scale: 0.1; opacity: 0}
+                      },
+                       State {
+                           name: "SHOW"
+                           PropertyChanges {target: zaklOpGrid; scale: 1; opacity: 1}
+                       }
+
+                   ]
+
+                   transitions: [
+                       Transition {
+                          PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+                       }
+                   ]
          },
 
          GridView {
@@ -560,6 +634,27 @@ ListModel {
           height: 640
           cellHeight: 160
           cellWidth: 100
+          state: "FADE"
+          scale: 0.1
+          opacity: 0
+
+          states: [
+              State {
+                  name: "FADE"
+                  PropertyChanges {target: integralyGrid; scale: 0.1; opacity: 0}
+             },
+              State {
+                  name: "SHOW"
+                  PropertyChanges {target: integralyGrid; scale: 1; opacity: 1}
+              }
+
+          ]
+
+          transitions: [
+              Transition {
+                 PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+              }
+          ]
          },
 
          GridView {
@@ -576,6 +671,27 @@ ListModel {
           height: 640
           cellHeight: 160
           cellWidth: 100
+          state: "FADE"
+          scale: 0.1
+          opacity: 0
+
+          states: [
+              State {
+                  name: "FADE"
+                  PropertyChanges {target: logaritmyGrid; scale: 0.1; opacity: 0}
+             },
+              State {
+                  name: "SHOW"
+                  PropertyChanges {target: logaritmyGrid; scale: 1; opacity: 1}
+              }
+
+          ]
+
+          transitions: [
+              Transition {
+                 PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+              }
+          ]
          },
 
          GridView {
@@ -583,12 +699,6 @@ ListModel {
              model:ostatni
              delegate: menuDelegate
              focus: true
-             Keys.onPressed: {
-                 if (event.key == Qt.Key_Q) {
-                     console.log('Key q was pressed');
-                     event.accepted = true;
-                 }
-             }
            visible: false
           id: ostatniGrid
           x: 46
@@ -597,6 +707,27 @@ ListModel {
           height: 640
           cellHeight: 160
           cellWidth: 100
+          state: "FADE"
+          scale: 0.1
+          opacity: 0
+
+          states: [
+              State {
+                  name: "FADE"
+                  PropertyChanges {target: ostatniGrid; scale: 0.1; opacity: 0}
+             },
+              State {
+                  name: "SHOW"
+                  PropertyChanges {target: ostatniGrid; scale: 1; opacity: 1}
+              }
+
+          ]
+
+          transitions: [
+              Transition {
+                 PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+              }
+          ]
          }
    ]
 }
