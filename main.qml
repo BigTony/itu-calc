@@ -88,7 +88,7 @@ ApplicationWindow {
                     return
                 }else if(gridViews[activeGrid].model.get(c).special){
                     console.log("unicode")
-                    console.log(textObject.toString())
+                    console.log(gridViews[activeGrid].model.get(c).textObject.toString())
                 }else{
                     console.log(textObject.toString())
                 }
@@ -362,29 +362,86 @@ ListModel {
         switchOp: false
         colorCode: "grey"
         name: "q"
+        labelObject: "\u222B \u25A1"
+        textObject: "\u222B \u25A1"
+        special: true
+    }
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "w"
         labelObject: "\u222B"
         textObject: "\u222B"
         special: true
     }
     ListElement{
         colorCode: "grey"
-        name: "w"
+        name: "e"
+        labelObject: "\u222C \u25A1"
+        textObject: "\u222C \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "r"
         labelObject: "\u222C"
         textObject: "\u222C"
         special: true
     }
     ListElement{
         colorCode: "grey"
-        name: "e"
+        name: "a"
+        labelObject: "\u222D \u25A1"
+        textObject: "\u222D \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "s"
+        labelObject: "\u222D"
+        textObject: "\u222D"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "d"
+        labelObject: "\u222E \u25A1"
+        textObject: "\u222E \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "f"
         labelObject: "\u222E"
         textObject: "\u222E"
         special: true
     }
     ListElement{
         colorCode: "grey"
-        name: "a"
+        name: "z"
+        labelObject: "\u222F \u25A1"
+        textObject: "\u222F \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "x"
         labelObject: "\u222F"
         textObject: "\u222F"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "c"
+        labelObject: "\u2230 \u25A1"
+        textObject: "\u2230 \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "v"
+        labelObject: "\u2230"
+        textObject: "\u2230"
         special: true
     }
 }
@@ -551,7 +608,7 @@ ListModel {
                 name: "Ctrl+3"
                 colorCode: "#09c300"
                 textObject: "3"
-                labelObject: "log"
+                labelObject: "sin \u25A1"
                 gridNumber: 3
             }
 
