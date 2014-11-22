@@ -12,20 +12,15 @@ Rectangle {
     function delIndex (index){}
     Rectangle {
         id: leftTopIndex
-
-
     }
     Rectangle {
         id: leftBotIndex
-
     }
     Rectangle {
         id: rightTopIndex
-
     }
     Rectangle {
         id: rightBotIndex
-
     }
     Rectangle{
         x: 0
