@@ -1,10 +1,20 @@
  // myarray.js
-var activeObj;
+var activeObj = -1;
 var objArray = new Array();
+var lineArray = new Array();
 
-function getList() {
-     return objArray
+
+function getObj(x) {
+     return objArray[x]
  }
-function addItem(item) {
+function addObj(item) {
      objArray.push(item)
  }
+
+function getLine(x) {
+     return lineArray[x]
+ }
+function addLine(item) {
+     lineArray.push(item)
+ }
+

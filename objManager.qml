@@ -1,7 +1,12 @@
-import QtQuick 2.0
-
+import QtQuick 2.2
+import QtQuick.Controls 1.1
+import "myarray.js" as Script
 Rectangle {
-    function addObject(obj){}
+    function addObject(type,obj){
+        if (type==opr) {
+
+        }
+    }
     function delActive(){}
     function setActive(x,y){}
     function addLine(){}
@@ -18,9 +23,5 @@ Rectangle {
 
     Component.onCompleted: {
     var component = Qt.createComponent("MathObj.qml");
-        for (var i=0; i<1; i++) {
-            var object = component.createObject(objectArea);
-                    Script.addItem(object);
-                     (Script.getList()[i]).x = ((Script.getList()[i]).width + 10) * i;
-                 }}
+    }
 }
