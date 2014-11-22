@@ -61,7 +61,7 @@ ApplicationWindow {
       @gridNumber = cislo gridu ktery nastavujeme na viditelny
       */
     function switchGrids(switchOp,gridNumber){
-        if(switchOp){
+        if(switchOp && (gridNumber < 6)){
             gridViews[activeGrid].state = "FADE"
             gridViews[gridNumber].visible = true
             gridViews[gridNumber].state = "SHOW"
@@ -88,7 +88,7 @@ ApplicationWindow {
                     return
                 }else if(gridViews[activeGrid].model.get(c).special){
                     console.log("unicode")
-                    console.log(textObject.toString())
+                    console.log(gridViews[activeGrid].model.get(c).textObject.toString())
                 }else{
                     console.log(textObject.toString())
                 }
@@ -151,6 +151,10 @@ Rectangle{
             console.log('Key e was pressed');
             findModelShortCut("e")
             event.accepted = true;
+        }else if (event.key == Qt.Key_R) {
+            console.log('Key r was pressed');
+            findModelShortCut("r")
+            event.accepted = true;
         }else if (event.key == Qt.Key_A) {
             console.log('Key e was pressed');
             findModelShortCut("a")
@@ -162,6 +166,10 @@ Rectangle{
         }else if (event.key == Qt.Key_D) {
             console.log('Key e was pressed');
             findModelShortCut("d")
+            event.accepted = true;
+        }else if (event.key == Qt.Key_F) {
+            console.log('Key f was pressed');
+            findModelShortCut("f")
             event.accepted = true;
         }else if (event.key == Qt.Key_Z) {
             console.log('Key e was pressed');
@@ -178,6 +186,10 @@ Rectangle{
         // zpet na main grid
        // jako Back button
        // TODO: aktivovat animaci
+        }else if (event.key == Qt.Key_V) {
+            console.log('Key v was pressed');
+            findModelShortCut("v")
+            event.accepted = true;
         }else if (event.key == Qt.Key_B) {
             console.log('Key b was pressed');
             switchGrids(1,0)
@@ -279,16 +291,23 @@ ListModel {
     }
     ListElement{
         colorCode: "grey"
-        name: "a"
+        name: "r"
         labelObject: "\u00F7"
         textObject: "\u00F7"
         special: false
     }
     ListElement{
         colorCode: "grey"
+        name: "a"
+        labelObject: ">"
+        textObject: ">"
+        special: false
+    }
+    ListElement{
+        colorCode: "grey"
         name: "s"
-        labelObject: ","
-        textObject: ","
+        labelObject: "<"
+        textObject: "<"
         special: false
     }
     ListElement{
@@ -300,24 +319,41 @@ ListModel {
     }
     ListElement{
         colorCode: "grey"
-        name: "y"
-        labelObject: "("
-        textObject: "("
+        name: "f"
+        labelObject: "\u00AC"
+        textObject: "\u00AC"
         special: false
     }
+
+    ListElement{
+        colorCode: "grey"
+        name: "z"
+        labelObject: "\u00B1"
+        textObject: "\u00B1"
+        special: false
+    }
+
     ListElement{
         colorCode: "grey"
         name: "x"
-        labelObject: ")"
-        textObject: ")"
+        labelObject: "\u2205"
+        textObject: "\u2205"
         special: false
     }
 
     ListElement{
         colorCode: "grey"
         name: "c"
-        labelObject: "\u00B1"
-        textObject: "\u00B1"
+        labelObject: "\u2264"
+        textObject: "\u2264"
+        special: false
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "v"
+        labelObject: "\u2265"
+        textObject: "\u2265"
         special: false
     }
 }
@@ -328,29 +364,86 @@ ListModel {
         switchOp: false
         colorCode: "grey"
         name: "q"
+        labelObject: "\u222B \u25A1"
+        textObject: "\u222B \u25A1"
+        special: true
+    }
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "w"
         labelObject: "\u222B"
         textObject: "\u222B"
         special: true
     }
     ListElement{
         colorCode: "grey"
-        name: "w"
+        name: "e"
+        labelObject: "\u222C \u25A1"
+        textObject: "\u222C \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "r"
         labelObject: "\u222C"
         textObject: "\u222C"
         special: true
     }
     ListElement{
         colorCode: "grey"
-        name: "e"
+        name: "a"
+        labelObject: "\u222D \u25A1"
+        textObject: "\u222D \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "s"
+        labelObject: "\u222D"
+        textObject: "\u222D"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "d"
+        labelObject: "\u222E \u25A1"
+        textObject: "\u222E \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "f"
         labelObject: "\u222E"
         textObject: "\u222E"
         special: true
     }
     ListElement{
         colorCode: "grey"
-        name: "a"
+        name: "z"
+        labelObject: "\u222F \u25A1"
+        textObject: "\u222F \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "x"
         labelObject: "\u222F"
         textObject: "\u222F"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "c"
+        labelObject: "\u2230 \u25A1"
+        textObject: "\u2230 \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "v"
+        labelObject: "\u2230"
+        textObject: "\u2230"
         special: true
     }
 }
@@ -361,51 +454,97 @@ ListModel {
         switchOp: false
         colorCode: "grey"
         name: "q"
-        labelObject: "log"
-        textObject: "log"
+        labelObject: "sin \u25A1"
+        textObject: "sin \u25A1"
         special: true
     }
     ListElement{
         colorCode: "grey"
         name: "w"
-        labelObject: "ln"
-        textObject: "ln"
+        labelObject: "cos \u25A1"
+        textObject: "cos \u25A1"
         special: false
     }
     ListElement{
         colorCode: "grey"
         name: "e"
-        labelObject: "sin"
-        textObject: "sin"
+        labelObject: "tan \u25A1"
+        textObject: "tan \u25A1"
+        special: true
+    }
+    ListElement{
+        colorCode: "grey"
+        name: "r"
+        labelObject: "cot \u25A1"
+        textObject: "cot \u25A1"
         special: true
     }
     ListElement{
         colorCode: "grey"
         name: "a"
-        labelObject: "cos"
-        textObject: "cos"
+        labelObject: "sec \u25A1"
+        textObject: "sec \u25A1"
         special: true
     }
     ListElement{
         colorCode: "grey"
         name: "s"
-        labelObject: "tan"
-        textObject: "tan"
+        labelObject: "csc \u25A1"
+        textObject: "csc \u25A1"
         special: true
     }
+
     ListElement{
         colorCode: "grey"
         name: "d"
-        labelObject: "cotg"
-        textObject: "cotg"
+        labelObject: "sinh \u25A1"
+        textObject: "sinh \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "f"
+        labelObject: "cosh \u25A1"
+        textObject: "cosh \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "z"
+        labelObject: "tanh \u25A1"
+        textObject: "tanh \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "x"
+        labelObject: "csch \u25A1"
+        textObject: "csch \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "c"
+        labelObject: "sech \u25A1"
+        textObject: "sech \u25A1"
+        special: true
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "v"
+        labelObject: "coth \u25A1"
+        textObject: "coth \u25A1"
         special: true
     }
 }
 
-
-
 ListModel {
-    id:ostatni
+    id:mocodmoc
     ListElement{
         colorCode: "grey"
         name: "q"
@@ -444,11 +583,69 @@ ListModel {
 
 }
 
+ListModel {
+    id: zavorky
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "q"
+        labelObject: "("
+        textObject: "("
+        special: false
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "w"
+        labelObject: ")"
+        textObject: ")"
+        special: false
+    }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "e"
+            labelObject: "["
+            textObject: "]"
+            special: false
+        }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "r"
+            labelObject: "]"
+            textObject: "]"
+            special: false
+        }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "a"
+            labelObject: "{"
+            textObject: "{"
+            special: false
+        }
+
+    ListElement{
+            switchOp: false
+            colorCode: "grey"
+            name: "s"
+            labelObject: "}"
+            textObject: "}"
+            special: false
+        }
+}
+
+
     ListModel {
             id:mainMenu
             ListElement{
                 switchOp: true
-                name: "Ctrl+1"
+                name: "q"
                 colorCode: "#09c300"
                 textObject: "1"
                 labelObject: "+\u2212\u00D7\u00F7"
@@ -457,33 +654,69 @@ ListModel {
 
             ListElement{
                 switchOp: true
-                name: "Ctrl+2"
+                name: "w"
                 colorCode: "#09c300"
                 textObject: "2"
-                labelObject: "\u2A1B"
+                labelObject: "\u222B \u25A1"
                 gridNumber: 2
             }
 
             ListElement{
                 switchOp: true
-                name: "Ctrl+3"
+                name: "e"
                 colorCode: "#09c300"
                 textObject: "3"
-                labelObject: "log"
+                labelObject: "sin \u25A1"
                 gridNumber: 3
             }
 
             ListElement{
                 switchOp: true
-                name: "Ctrl+4"
+                name: "r"
                 colorCode: "#09c300"
                 textObject: "4"
-                labelObject: "Více"
+                labelObject: "MO"
                 gridNumber: 4
             }
 
+            ListElement{
+                switchOp: true
+                name: "a"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "()[]"
+                gridNumber: 5
+            }
+
+            ListElement{
+                switchOp: true
+                name: "s"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "\u2211"
+                gridNumber: 6
+            }
+
+            ListElement{
+                switchOp: true
+                name: "d"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "log"
+                gridNumber: 7
+            }
+
+            ListElement{
+                switchOp: true
+                name: "f"
+                colorCode: "#09c300"
+                textObject: "4"
+                labelObject: "\u03BB \u03B5 \u03C0"
+                gridNumber: 8
+            }
+
             ListElement {
-                name: "q"
+                name: "z"
                 colorCode: "grey"
                 textObject: "1"
                 labelObject: "1"
@@ -491,7 +724,7 @@ ListModel {
             }
 
             ListElement {
-                name: "w"
+                name: "x"
                 colorCode: "grey"
                 textObject: "2"
                 labelObject: "2"
@@ -499,7 +732,7 @@ ListModel {
             }
 
             ListElement {
-                name: "e"
+                name: "c"
                 colorCode: "grey"
                 textObject: "3"
                 labelObject: "3"
@@ -507,52 +740,14 @@ ListModel {
             }
 
             ListElement {
-                name: "a"
+                name: "v"
                 colorCode: "grey"
                 textObject: "4"
                 labelObject: "4"
                 special: false
             }
 
-            ListElement {
-                name: "s"
-                colorCode: "grey"
-                textObject: "5"
-                labelObject: "5"
-                special: false
-            }
 
-            ListElement {
-                name: "d"
-                colorCode: "grey"
-                textObject: "6"
-                labelObject: "6"
-                special: false
-            }
-
-            ListElement {
-                name: "z"
-                colorCode: "grey"
-                textObject: "7"
-                labelObject: "7"
-                special: false
-            }
-
-            ListElement {
-                name: "x"
-                colorCode: "grey"
-                textObject: "8"
-                labelObject: "8"
-                special: false
-            }
-
-            ListElement {
-                name: "c"
-                colorCode: "grey"
-                textObject: "9"
-                labelObject: "9"
-                special: false
-            }
         }
 
      Component {
@@ -590,7 +785,9 @@ ListModel {
                         onExited: buttonObject.state = "RELEASED"
                         onClicked: {
                             if(switchOp){
-                                switchGrids(switchOp,gridNumber)
+                                if(gridNumber < 5){
+                                    switchGrids(switchOp,gridNumber)
+                                }
                             }else if(textObject.special){
                                 console.log("unicode")
                                 console.log(textObject.toString())
@@ -811,11 +1008,11 @@ ListModel {
 
          GridView {
              parent: mainRect
-             model:ostatni
+             model:mocodmoc
              delegate: menuDelegate
              focus: true
            visible: false
-          id: ostatniGrid
+          id: mocodmocGrid
           x: 46
           y: 40
           width: 400
@@ -829,11 +1026,47 @@ ListModel {
           states: [
               State {
                   name: "FADE"
-                  PropertyChanges {target: ostatniGrid; scale: 0.1; opacity: 0}
+                  PropertyChanges {target: mocodmocGrid; scale: 0.1; opacity: 0}
              },
               State {
                   name: "SHOW"
-                  PropertyChanges {target: ostatniGrid; scale: 1; opacity: 1}
+                  PropertyChanges {target: mocodmocGrid; scale: 1; opacity: 1}
+              }
+
+          ]
+
+          transitions: [
+              Transition {
+                 PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+              }
+          ]
+         },
+
+         GridView {
+             parent: mainRect
+             model:zavorky
+             delegate: menuDelegate
+             focus: true
+           visible: false
+          id: zavorkyGrid
+          x: 46
+          y: 40
+          width: 400
+          height: 640
+          cellHeight: 160
+          cellWidth: 100
+          state: "FADE"
+          scale: 0.1
+          opacity: 0
+
+          states: [
+              State {
+                  name: "FADE"
+                  PropertyChanges {target: zavorkyGrid; scale: 0.1; opacity: 0}
+             },
+              State {
+                  name: "SHOW"
+                  PropertyChanges {target: zavorkyGrid; scale: 1; opacity: 1}
               }
 
           ]
