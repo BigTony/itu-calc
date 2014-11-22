@@ -3,8 +3,8 @@ import QtQuick 2.2
 
 
 Rectangle {
-    x: 100
-    y: 100
+    x: 0
+    y: 0
     id: expression
     color: "red"
     width: 100

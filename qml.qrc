@@ -4,6 +4,7 @@
         <file>MathObj.qml</file>
         <file>myarray.js</file>
         <file>ObjManager.qml</file>
+        <file>Line.qml</file>
 		<file>bg/2.png</file>
 		<file>bg/3.png</file>
 		<file>bg/4.png</file>
