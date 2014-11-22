@@ -118,14 +118,14 @@ Rectangle{
             color: "#bee07b"
         }
     }
-    Image {
+/*    Image {
         anchors.fill: parent
         //width: 130; height: 100
         smooth: true
         source: "qrc:///bg/"+theme
     }
 
-
+*/
     // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
