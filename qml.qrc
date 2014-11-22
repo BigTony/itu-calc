@@ -4,5 +4,9 @@
         <file>MathObj.qml</file>
         <file>myarray.js</file>
         <file>ObjManager.qml</file>
+		<file>bg/2.png</file>
+		<file>bg/3.png</file>
+		<file>bg/4.png</file>
+		<file>bg/5.png</file>
     </qresource>
 </RCC>
