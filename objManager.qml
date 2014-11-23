@@ -24,6 +24,23 @@ Rectangle {
     anchors.topMargin: -330
     anchors.right: parent.horizontalCenter
     anchors.rightMargin: -512
+
+    radius: 20
+
+    gradient: Gradient {
+        GradientStop {
+            position: 0
+            color: "#ffffff"
+        }
+
+        GradientStop {
+            position: 1
+            color: "#dcf4ff"
+        }
+    }
+
+
+
     Rectangle{
     id: innerArea
     parent: outArea
