@@ -107,6 +107,14 @@ Rectangle{
     anchors.fill: parent
     id: mainRect
 
+//    MouseArea {
+//            id: shortCutMouseArea
+//            anchors.fill: parent
+//            onClicked: {
+//                console.log("MainMouseArea")
+//            }
+//    }
+
 
     //TODO: STYLY ZDE
     gradient: Gradient {
@@ -1004,6 +1012,14 @@ ListModel {
                         anchors.fill: parent
                     }
 
+                    Image {
+                        id: keyboardBg
+                        source: "../icons/keyboard.png"
+                        anchors.fill: parent
+                        scale: 0.5
+                        anchors.bottomMargin: -100
+                    }
+
                     MouseArea{
                         hoverEnabled: true
                         id: mouseAreaGridView1
@@ -1013,6 +1029,7 @@ ListModel {
                         onEntered: buttonObject.state = "HOVER"
                         onExited: buttonObject.state = "RELEASED"
                         onClicked: {
+                            mainRect.focus = true
                             if(switchOp){
                                 if(gridNumber < 7){
                                     switchGrids(switchOp,gridNumber)
@@ -1094,6 +1111,18 @@ ListModel {
              model:mainMenu
              delegate: menuDelegate
              focus: true
+
+//                 MouseArea {
+//                         id: shortCutMouseArea
+//                         anchors.fill: gridView1
+//                         onClicked: {
+//                             console.log(mainRect.focus)
+//                             console.log(gridView1.focus)
+//                             console.log(shortCutMouseArea.focus)
+////                             mainRect.focus = true
+////                             focus: false
+//                         }
+//                 }
 
              state: "SHOW"
              id: gridView1
