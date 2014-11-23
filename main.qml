@@ -1006,14 +1006,50 @@ ListModel {
 
 
 
+
+                    property color gradcolor_o: "#ffffff"
+                    property color gradcolor2_o: "#98dcff"
+
+                    property color gradcolor: "#ffffff"
+                    property color gradcolor2: "#98dcff"
+                    gradient: Gradient {
+                        id: grad1
+                        GradientStop {
+                            position: 0
+                            color: buttonObject.gradcolor
+                        }
+
+                        GradientStop {
+                            position: 1
+                            color: buttonObject.gradcolor2
+                        }
+                    }
+
                     MouseArea{
                         hoverEnabled: true
                         id: mouseAreaGridView1
                         anchors.fill: parent
-                        onPressed: buttonObject.state = "PRESSED"
-                        onReleased: buttonObject.state = "RELEASED"
-                        onEntered: buttonObject.state = "HOVER"
-                        onExited: buttonObject.state = "RELEASED"
+                        onPressed: {
+                            buttonObject.state = "PRESSED"
+                            buttonObject.gradcolor = buttonObject.gradcolor2_o
+                            buttonObject.gradcolor2 = buttonObject.gradcolor_o
+                        }
+                        onReleased: {
+                            buttonObject.state = "RELEASED"
+                            buttonObject.gradcolor = buttonObject.gradcolor_o
+                            buttonObject.gradcolor2 = buttonObject.gradcolor2_o
+                        }
+                        onEntered: {
+                            buttonObject.state = "HOVER"
+                            buttonObject.gradcolor = "#d3f0ff"
+                            buttonObject.gradcolor2 = "#61c9ff"
+                        }
+                        onExited: {
+                            buttonObject.state = "RELEASED"
+                            buttonObject.gradcolor  = buttonObject.gradcolor_o
+                            buttonObject.gradcolor2 = buttonObject.gradcolor2_o
+                        }
+
                         onClicked: {
                             mainRect.focus = true
                             if(switchOp){
@@ -1054,7 +1090,7 @@ ListModel {
                              },
                             State {
                                 name: "HOVER"
-                                PropertyChanges { target: buttonObject; border.color: "red"; radius: 10; opacity: 0.8}
+                                PropertyChanges { target: buttonObject; border.color: "#066fff"; radius: 10; /*opacity: 0.8*/}
                             }
                     ]
 
