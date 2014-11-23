@@ -107,6 +107,14 @@ Rectangle{
     anchors.fill: parent
     id: mainRect
 
+//    MouseArea {
+//            id: shortCutMouseArea
+//            anchors.fill: parent
+//            onClicked: {
+//                console.log("MainMouseArea")
+//            }
+//    }
+
 
     //TODO: STYLY ZDE
     gradient: Gradient {
@@ -1003,6 +1011,14 @@ ListModel {
                         anchors.fill: parent
                     }
 
+                    Image {
+                        id: keyboardBg
+                        source: "../icons/keyboard.png"
+                        anchors.fill: parent
+                        scale: 0.5
+                        anchors.bottomMargin: -100
+                    }
+
                     MouseArea{
                         hoverEnabled: true
                         id: mouseAreaGridView1
@@ -1093,6 +1109,15 @@ ListModel {
              model:mainMenu
              delegate: menuDelegate
              focus: true
+
+                 MouseArea {
+                         id: shortCutMouseArea
+                         anchors.fill: parent
+                         onClicked: {
+                             console.log("MainMouseArea")
+                             focus: true
+                         }
+                 }
 
              state: "SHOW"
              id: gridView1
