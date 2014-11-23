@@ -10,7 +10,7 @@ ApplicationWindow {
     title: qsTr("Hello World")
     id: mainWin
 
-    property string theme: "" // basic
+    property string theme: "bg1.jpg" // basic
 
 
        menuBar: MenuBar {
@@ -28,23 +28,15 @@ ApplicationWindow {
                title: "Změna stylu"
                MenuItem {
                    text: qsTr("Original")
-                   onTriggered: theme = ""
+                   onTriggered: theme = "bg1.jpg"
                }
                MenuItem {
-                   text: qsTr("Hellou Kitty")
-                   onTriggered: theme = "2.png"
+                   text: qsTr("Vzorek")
+                   onTriggered: theme = "bg2.jpg"
                }
                MenuItem {
-                   text: qsTr("das")
-                   onTriggered: theme = "3.png"
-               }
-               MenuItem {
-                   text: qsTr("das")
-                   onTriggered: theme = "4.png"
-               }
-               MenuItem {
-                   text: qsTr("das")
-                   onTriggered: theme = "5.png"
+                   text: qsTr("Hello Kitty")
+                   onTriggered: theme = "bg3.jpg"
                }
            }
        }
@@ -128,14 +120,14 @@ Rectangle{
             color: "#bee07b"
         }
     }
-/*    Image {
+    Image {
         anchors.fill: parent
         //width: 130; height: 100
         smooth: true
         source: "qrc:///bg/"+theme
     }
 
-*/
+
     // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
