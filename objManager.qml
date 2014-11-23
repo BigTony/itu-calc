@@ -3,6 +3,10 @@ import QtQuick.Controls 1.1
 import "myarray.js" as Script
 Rectangle {
     id: outArea
+    function addUni(uni){
+    var obj = Script.getObj(Script.activeObj);
+   console.log(obj.id)
+    }
     function test(){
         Script.getLine(0).y=100;
     }

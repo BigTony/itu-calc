@@ -5,7 +5,6 @@ import "myarray.js" as Script
 Rectangle {
     property bool resizable: true
     property int p: 0
-    id: expression
     color: "red"
     width: 60
     height: 20
@@ -25,7 +24,7 @@ Rectangle {
     }
     Rectangle{
         property bool resizable: true
-        id:exp
+        id:expr
         width:20
         height:20
         color:"blue"
@@ -33,11 +32,10 @@ Rectangle {
             property bool resizable: true
             font.pixelSize: 15
             id: textfi
-            parent: exp
             width:15
             onEditingFinished: resize()
             function resize(){
-            width=8+text.length*8
+            width=15+text.length*8
             Script.resize(textfi)
             }
         }
