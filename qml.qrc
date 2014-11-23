@@ -13,6 +13,7 @@
 		<file>icons/7.png</file>
 		<file>icons/8.png</file>
 		<file>icons/9.png</file>
+		<file>icons/10.png</file>
         <file>Line.qml</file>
 
     </qresource>
