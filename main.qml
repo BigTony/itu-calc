@@ -1012,13 +1012,7 @@ ListModel {
                         anchors.fill: parent
                     }
 
-                    Image {
-                        id: keyboardBg
-                        source: "../icons/keyboard.png"
-                        anchors.fill: parent
-                        scale: 0.5
-                        anchors.bottomMargin: -100
-                    }
+
 
                     MouseArea{
                         hoverEnabled: true
@@ -1088,13 +1082,27 @@ ListModel {
                 }
 
                 Text {
-                    x: 5
+                    //x: 5
                     text: name
                     font.bold: true
                     width: 90
                     horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+
                     wrapMode: Text.Wrap
                     font.pointSize: 12
+                    height: 35
+
+                    Image {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        id: keyboardBg
+                        source: "../icons/keyboard.png"
+                        scale: 1
+                        //anchors.fill: parent
+                        height: parent.height
+                        z: -1
+                    }
                 }
 
                 spacing: 5
