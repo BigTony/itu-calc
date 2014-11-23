@@ -937,36 +937,37 @@ ListModel {
                 name: "z"
                 colorCode: "grey"
                 textObject: "1"
-                labelObject: "1"
+                labelObject: ""
+                bg: "../icons/10.png"
                 special: false
-                bg: "n"
+                //bg: "n"
             }
 
             ListElement {
                 name: "x"
                 colorCode: "grey"
                 textObject: "2"
-                labelObject: "2"
+                labelObject: ""
                 special: false
-                bg: "n"
+                bg: "../icons/1.png"
             }
 
             ListElement {
                 name: "c"
                 colorCode: "grey"
                 textObject: "3"
-                labelObject: "3"
+                labelObject: ""
                 special: false
-                bg: "n"
+                bg: "../icons/6.png"
             }
 
             ListElement {
                 name: "v"
                 colorCode: "grey"
                 textObject: "4"
-                labelObject: "4"
+                labelObject: ""
                 special: false
-                bg: "n"
+                bg: "../icons/5.png"
             }
 
 
