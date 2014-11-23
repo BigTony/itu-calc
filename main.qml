@@ -1028,6 +1028,7 @@ ListModel {
                         onEntered: buttonObject.state = "HOVER"
                         onExited: buttonObject.state = "RELEASED"
                         onClicked: {
+                            mainRect.focus = true
                             if(switchOp){
                                 if(gridNumber < 7){
                                     switchGrids(switchOp,gridNumber)
@@ -1110,14 +1111,17 @@ ListModel {
              delegate: menuDelegate
              focus: true
 
-                 MouseArea {
-                         id: shortCutMouseArea
-                         anchors.fill: parent
-                         onClicked: {
-                             console.log("MainMouseArea")
-                             focus: true
-                         }
-                 }
+//                 MouseArea {
+//                         id: shortCutMouseArea
+//                         anchors.fill: gridView1
+//                         onClicked: {
+//                             console.log(mainRect.focus)
+//                             console.log(gridView1.focus)
+//                             console.log(shortCutMouseArea.focus)
+////                             mainRect.focus = true
+////                             focus: false
+//                         }
+//                 }
 
              state: "SHOW"
              id: gridView1
