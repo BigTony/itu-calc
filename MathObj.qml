@@ -17,44 +17,19 @@ Rectangle {
     function reDraw(){}
 
     function getShit(){
-        console.log( "timeout: " + loader.item.width )
-        return
+        return expr.width
     }
 
-    Component {
-            id: comp1
-            Rectangle {
-                property bool resizable: true
-                id:expr
-                width:20
-                height:20
-                color:"blue"
-                TextField{
-                    property bool resizable: true
-                    font.pixelSize: 15
-                    id: textfi
-                    width:15
-        //            onEditingFinished: resize()
-                    function resize(){
-                    width=15+text.length*8
-                    Script.resize(textfi)
-                    }
-                }
-            }
-        }
-
-        Loader {
-            id: loader
-            sourceComponent: comp1
-        }
 
 //        property load: loader
 //        Component.onCompleted: load = loader
 
-//        Component.onCompleted: console.log("yolo")
+//        Component.onCompleted: console.log(expr.width)
 
 
 //        Component.onCompleted: console.log( "timeout: " + loader.item.width )
+
+
 
         Rectangle{
             property bool resizable: true

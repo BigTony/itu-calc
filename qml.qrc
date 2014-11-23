@@ -13,6 +13,9 @@
 		<file>icons/7.png</file>
 		<file>icons/8.png</file>
 		<file>icons/9.png</file>
+		<file>bg/bg1.jpg</file>
+		<file>bg/bg2.jpg</file>
+		<file>bg/bg3.jpg</file>
 		<file>icons/keyboard.png</file>
 		<file>icons/10.png</file>
         <file>Line.qml</file>
