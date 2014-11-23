@@ -53,6 +53,8 @@ ApplicationWindow {
 
     property int activeGrid: 0
 
+
+
     /*
       Funkce pro zmenu nastaveni viditelnosti gridu pro vyber operaci
       vola se u kazdeho kliknuti na button v gridu, pokud je to button
@@ -61,7 +63,7 @@ ApplicationWindow {
       @gridNumber = cislo gridu ktery nastavujeme na viditelny
       */
     function switchGrids(switchOp,gridNumber){
-        if(switchOp && (gridNumber < 6)){
+        if(switchOp && (gridNumber < 7)){
             gridViews[activeGrid].state = "FADE"
             gridViews[gridNumber].visible = true
             gridViews[gridNumber].state = "SHOW"
@@ -129,6 +131,7 @@ Rectangle{
     // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
+//           console.log( positionViewAtIndex(3,gridViews[activeGrid].Beginning).x)
             console.log('Key q was pressed');
 //            console.log(gridView1.count)
 //            gridView1.moveCurrentIndexDown()
@@ -190,7 +193,7 @@ Rectangle{
             console.log('Key v was pressed');
             findModelShortCut("v")
             event.accepted = true;
-        }else if (event.key == Qt.Key_B) {
+        }else if (event.key == Qt.Key_Space) {
             console.log('Key b was pressed');
             switchGrids(1,0)
             btnBack.visible = false
@@ -264,6 +267,119 @@ Rectangle{
     }
 }
 
+ListModel {
+    id:numbers
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "q"
+        textObject: "1"
+        labelObject: "1"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "w"
+        textObject: "2"
+        labelObject: "2"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "e"
+        textObject: "3"
+        labelObject: "3"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "r"
+        textObject: "4"
+        labelObject: "4"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "a"
+        textObject: "5"
+        labelObject: "5"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "s"
+        textObject: "6"
+        labelObject: "6"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "d"
+        textObject: "7"
+        labelObject: "7"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "f"
+        textObject: "8"
+        labelObject: "8"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "z"
+        textObject: "9"
+        labelObject: "9"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "x"
+        textObject: "0"
+        labelObject: "0"
+        special: false
+        bg: "n"
+    }
+
+    ListElement{
+        switchOp: false
+        colorCode: "grey"
+        name: "c"
+        textObject: "."
+        labelObject: "."
+        special: false
+        bg: "n"
+    }
+}
+
 
 ListModel {
     id:zaklOp
@@ -274,6 +390,7 @@ ListModel {
         textObject: "+"
         labelObject: "+"
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -281,6 +398,7 @@ ListModel {
         labelObject: "\u2212"
         textObject: "\u2212"
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -288,6 +406,7 @@ ListModel {
         labelObject: "\u00D7"
         textObject: "\u00D7"
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -295,6 +414,7 @@ ListModel {
         labelObject: "\u00F7"
         textObject: "\u00F7"
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -302,6 +422,7 @@ ListModel {
         labelObject: ">"
         textObject: ">"
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -309,6 +430,7 @@ ListModel {
         labelObject: "<"
         textObject: "<"
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -316,6 +438,7 @@ ListModel {
         labelObject: "="
         textObject: "="
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -323,6 +446,7 @@ ListModel {
         labelObject: "\u00AC"
         textObject: "\u00AC"
         special: false
+        bg: "n"
     }
 
     ListElement{
@@ -331,6 +455,7 @@ ListModel {
         labelObject: "\u00B1"
         textObject: "\u00B1"
         special: false
+        bg: "n"
     }
 
     ListElement{
@@ -339,6 +464,7 @@ ListModel {
         labelObject: "\u2205"
         textObject: "\u2205"
         special: false
+        bg: "n"
     }
 
     ListElement{
@@ -347,6 +473,7 @@ ListModel {
         labelObject: "\u2264"
         textObject: "\u2264"
         special: false
+        bg: "n"
     }
 
     ListElement{
@@ -355,6 +482,7 @@ ListModel {
         labelObject: "\u2265"
         textObject: "\u2265"
         special: false
+        bg: "n"
     }
 }
 
@@ -367,6 +495,7 @@ ListModel {
         labelObject: "\u222B \u25A1"
         textObject: "\u222B \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         switchOp: false
@@ -375,6 +504,7 @@ ListModel {
         labelObject: "\u222B"
         textObject: "\u222B"
         special: true
+        bg: "../icons/9.png"
     }
     ListElement{
         colorCode: "grey"
@@ -382,6 +512,7 @@ ListModel {
         labelObject: "\u222C \u25A1"
         textObject: "\u222C \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -389,6 +520,7 @@ ListModel {
         labelObject: "\u222C"
         textObject: "\u222C"
         special: true
+        bg: "../icons/9.png"
     }
     ListElement{
         colorCode: "grey"
@@ -396,6 +528,7 @@ ListModel {
         labelObject: "\u222D \u25A1"
         textObject: "\u222D \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -403,6 +536,7 @@ ListModel {
         labelObject: "\u222D"
         textObject: "\u222D"
         special: true
+        bg: "../icons/9.png"
     }
     ListElement{
         colorCode: "grey"
@@ -410,6 +544,7 @@ ListModel {
         labelObject: "\u222E \u25A1"
         textObject: "\u222E \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -417,6 +552,7 @@ ListModel {
         labelObject: "\u222E"
         textObject: "\u222E"
         special: true
+        bg: "../icons/9.png"
     }
     ListElement{
         colorCode: "grey"
@@ -424,6 +560,7 @@ ListModel {
         labelObject: "\u222F \u25A1"
         textObject: "\u222F \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -431,6 +568,7 @@ ListModel {
         labelObject: "\u222F"
         textObject: "\u222F"
         special: true
+        bg: "../icons/9.png"
     }
     ListElement{
         colorCode: "grey"
@@ -438,6 +576,7 @@ ListModel {
         labelObject: "\u2230 \u25A1"
         textObject: "\u2230 \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -445,6 +584,7 @@ ListModel {
         labelObject: "\u2230"
         textObject: "\u2230"
         special: true
+        bg: "../icons/9.png"
     }
 }
 
@@ -457,6 +597,7 @@ ListModel {
         labelObject: "sin \u25A1"
         textObject: "sin \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -464,6 +605,7 @@ ListModel {
         labelObject: "cos \u25A1"
         textObject: "cos \u25A1"
         special: false
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -471,6 +613,7 @@ ListModel {
         labelObject: "tan \u25A1"
         textObject: "tan \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -478,6 +621,7 @@ ListModel {
         labelObject: "cot \u25A1"
         textObject: "cot \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -485,6 +629,7 @@ ListModel {
         labelObject: "sec \u25A1"
         textObject: "sec \u25A1"
         special: true
+        bg: "n"
     }
     ListElement{
         colorCode: "grey"
@@ -492,6 +637,7 @@ ListModel {
         labelObject: "csc \u25A1"
         textObject: "csc \u25A1"
         special: true
+        bg: "n"
     }
 
     ListElement{
@@ -500,6 +646,7 @@ ListModel {
         labelObject: "sinh \u25A1"
         textObject: "sinh \u25A1"
         special: true
+        bg: "n"
     }
 
     ListElement{
@@ -508,6 +655,7 @@ ListModel {
         labelObject: "cosh \u25A1"
         textObject: "cosh \u25A1"
         special: true
+        bg: "n"
     }
 
     ListElement{
@@ -516,6 +664,7 @@ ListModel {
         labelObject: "tanh \u25A1"
         textObject: "tanh \u25A1"
         special: true
+        bg: "n"
     }
 
     ListElement{
@@ -524,6 +673,7 @@ ListModel {
         labelObject: "csch \u25A1"
         textObject: "csch \u25A1"
         special: true
+        bg: "n"
     }
 
     ListElement{
@@ -532,6 +682,7 @@ ListModel {
         labelObject: "sech \u25A1"
         textObject: "sech \u25A1"
         special: true
+        bg: "n"
     }
 
     ListElement{
@@ -540,6 +691,7 @@ ListModel {
         labelObject: "coth \u25A1"
         textObject: "coth \u25A1"
         special: true
+        bg: "n"
     }
 }
 
@@ -548,37 +700,73 @@ ListModel {
     ListElement{
         colorCode: "grey"
         name: "q"
-        labelObject: "\u03A0"
-        textObject: "\u03A0"
+        labelObject: " "
+        textObject: "../icons/1.png"
         switchOp: false
+        bg: "../icons/1.png"
     }
+
     ListElement{
         colorCode: "grey"
         name: "w"
-        labelObject: "\u00BD"
-        textObject: "\u00BD"
-        special: false
+        labelObject: " "
+        textObject: "../icons/2.png"
+        switchOp: false
+        bg: "../icons/2.png"
     }
+
     ListElement{
         colorCode: "grey"
         name: "e"
-        labelObject: "\u221A"
-        textObject: "\u221A"
-        special: false
+        labelObject: " "
+        textObject: "../icons/3.png"
+        switchOp: false
+        bg: "../icons/3.png"
     }
+
+    ListElement{
+        colorCode: "grey"
+        name: "r"
+        labelObject: " "
+        textObject: "../icons/4.png"
+        switchOp: false
+        bg: "../icons/4.png"
+    }
+
     ListElement{
         colorCode: "grey"
         name: "a"
-        labelObject: "\u221B"
-        textObject: "\u221B"
-        special: false
+        labelObject: " "
+        textObject: "../icons/5.png"
+        switchOp: false
+        bg: "../icons/5.png"
     }
+
     ListElement{
         colorCode: "grey"
         name: "s"
-        labelObject: "\u03A3"
-        textObject: "\u03A3"
-        special: false
+        labelObject: " "
+        textObject: "../icons/6.png"
+        switchOp: false
+        bg: "../icons/6.png"
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "d"
+        labelObject: " "
+        textObject: "../icons/7.png"
+        switchOp: false
+        bg: "../icons/7.png"
+    }
+
+    ListElement{
+        colorCode: "grey"
+        name: "f"
+        labelObject: " "
+        textObject: "../icons/8.png"
+        switchOp: false
+        bg: "../icons/8.png"
     }
 
 }
@@ -592,6 +780,7 @@ ListModel {
         labelObject: "("
         textObject: "("
         special: false
+        bg: "n"
     }
 
     ListElement{
@@ -601,6 +790,7 @@ ListModel {
         labelObject: ")"
         textObject: ")"
         special: false
+        bg: "n"
     }
 
     ListElement{
@@ -610,6 +800,7 @@ ListModel {
             labelObject: "["
             textObject: "]"
             special: false
+            bg: "n"
         }
 
     ListElement{
@@ -619,6 +810,7 @@ ListModel {
             labelObject: "]"
             textObject: "]"
             special: false
+            bg: "n"
         }
 
     ListElement{
@@ -628,6 +820,7 @@ ListModel {
             labelObject: "{"
             textObject: "{"
             special: false
+            bg: "n"
         }
 
     ListElement{
@@ -637,8 +830,16 @@ ListModel {
             labelObject: "}"
             textObject: "}"
             special: false
+            bg: "n"
         }
 }
+
+//Image {
+//    id: mocninaBg
+//    source: "../icons/1.png"
+////    x:  positionViewAtIndex(3,gridViews[activeGrid].Beginning).x
+////    y: gridViews[activeGrid].currentItem.y + 100
+//}
 
 
     ListModel {
@@ -650,6 +851,7 @@ ListModel {
                 textObject: "1"
                 labelObject: "+\u2212\u00D7\u00F7"
                 gridNumber: 1
+                bg: "n"
             }
 
             ListElement{
@@ -659,6 +861,7 @@ ListModel {
                 textObject: "2"
                 labelObject: "\u222B \u25A1"
                 gridNumber: 2
+                bg: "n"
             }
 
             ListElement{
@@ -668,6 +871,7 @@ ListModel {
                 textObject: "3"
                 labelObject: "sin \u25A1"
                 gridNumber: 3
+                bg: "n"
             }
 
             ListElement{
@@ -675,8 +879,9 @@ ListModel {
                 name: "r"
                 colorCode: "#09c300"
                 textObject: "4"
-                labelObject: "MO"
+                labelObject: " "
                 gridNumber: 4
+                bg: "../icons/1.png"
             }
 
             ListElement{
@@ -686,6 +891,7 @@ ListModel {
                 textObject: "4"
                 labelObject: "()[]"
                 gridNumber: 5
+                bg: "n"
             }
 
             ListElement{
@@ -693,8 +899,9 @@ ListModel {
                 name: "s"
                 colorCode: "#09c300"
                 textObject: "4"
-                labelObject: "\u2211"
+                labelObject: "1 2 3"
                 gridNumber: 6
+                bg: "n"
             }
 
             ListElement{
@@ -702,8 +909,9 @@ ListModel {
                 name: "d"
                 colorCode: "#09c300"
                 textObject: "4"
-                labelObject: "log"
+                labelObject: "\u2211"
                 gridNumber: 7
+                bg: "n"
             }
 
             ListElement{
@@ -713,6 +921,7 @@ ListModel {
                 textObject: "4"
                 labelObject: "\u03BB \u03B5 \u03C0"
                 gridNumber: 8
+                bg: "n"
             }
 
             ListElement {
@@ -721,6 +930,7 @@ ListModel {
                 textObject: "1"
                 labelObject: "1"
                 special: false
+                bg: "n"
             }
 
             ListElement {
@@ -729,6 +939,7 @@ ListModel {
                 textObject: "2"
                 labelObject: "2"
                 special: false
+                bg: "n"
             }
 
             ListElement {
@@ -737,6 +948,7 @@ ListModel {
                 textObject: "3"
                 labelObject: "3"
                 special: false
+                bg: "n"
             }
 
             ListElement {
@@ -745,6 +957,7 @@ ListModel {
                 textObject: "4"
                 labelObject: "4"
                 special: false
+                bg: "n"
             }
 
 
@@ -775,6 +988,21 @@ ListModel {
                         font.pointSize: 20
                     }
 
+                    Image {
+                        function testBg(bcg) {
+                            if(bcg !== "n"){
+                                 return bcg
+                            }else{
+                                  mocninaBg.visible = false
+                                 return "../icons/1.png"
+                            }
+                       }
+
+                        id: mocninaBg
+                        source: testBg(bg)
+                        anchors.fill: parent
+                    }
+
                     MouseArea{
                         hoverEnabled: true
                         id: mouseAreaGridView1
@@ -785,7 +1013,7 @@ ListModel {
                         onExited: buttonObject.state = "RELEASED"
                         onClicked: {
                             if(switchOp){
-                                if(gridNumber < 5){
+                                if(gridNumber < 7){
                                     switchGrids(switchOp,gridNumber)
                                 }
                             }else if(textObject.special){
@@ -1076,6 +1304,43 @@ ListModel {
                  PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
               }
           ]
+         },
+
+         GridView {
+             parent: mainRect
+             model:numbers
+             delegate: menuDelegate
+             focus: true
+           visible: false
+          id: numbersGrid
+          x: 46
+          y: 40
+          width: 400
+          height: 640
+          cellHeight: 160
+          cellWidth: 100
+          state: "FADE"
+          scale: 0.1
+          opacity: 0
+
+          states: [
+              State {
+                  name: "FADE"
+                  PropertyChanges {target: numbersGrid; scale: 0.1; opacity: 0}
+             },
+              State {
+                  name: "SHOW"
+                  PropertyChanges {target: numbersGrid; scale: 1; opacity: 1}
+              }
+
+          ]
+
+          transitions: [
+              Transition {
+                 PropertyAnimation {properties: "opacity,scale"; easing.type: Easing.InOutQuad}
+              }
+          ]
          }
    ]
 }
+
