@@ -153,8 +153,10 @@ Rectangle{
             findModelShortCut("q")
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
-            manager.addUni("\u2212")
             manager.test();
+            console.log("test:")
+            console.log(buttonObject.width)
+            console.log("endtest")
             console.log('Key w was pressed');
             findModelShortCut("w")
 

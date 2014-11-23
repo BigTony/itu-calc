@@ -8,6 +8,7 @@ Rectangle {
     color: "red"
     width: 60
     height: 20
+    id: mainExpr
     property string objType
     function addIndex (index){}
     function delIndex (index){}
