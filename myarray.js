@@ -17,4 +17,13 @@ function getLine(x) {
 function addLine(item) {
      lineArray.push(item)
  }
+function resize(obj){
+    if (obj.resizable===true){
+    obj.width=obj.childrenRect.width
+    }
 
+    if (obj.parent.resizable===true){
+    resize(obj.parent)
+    }
+
+}
