@@ -5,7 +5,12 @@ import "myarray.js" as Script
 
 
 Rectangle {
-
+    border.color: "black"
+    border.width: 1
+    property color gradcolor_o: "#ffffff"
+    property color gradcolor2_o: "#98dcff"
+    property color gradcolor: "#ffffff"
+    property color gradcolor2: "#98dcff"
     property bool man: false
     property bool resizable: true
     property int p: 0
@@ -39,6 +44,7 @@ Rectangle {
 
 
             Text{
+                state: "RELEASED"
                 property bool man: false
                 verticalAlignment: Text.AlignVCenter
  //               horizontalAlignment: Text.AlignHCenter
@@ -53,6 +59,7 @@ Rectangle {
                 Script.resize(textfi)
                 targetArea.anchors.fill=textfi
                 }
+
                 MouseArea{
                 property bool man: false
                 id:targetArea
@@ -62,8 +69,44 @@ Rectangle {
                 }
 
                 anchors.fill: parent
-                onEntered:setAct()
+                onPressed: {
+                    setAct()
+                     mainExpr.state = "PRESSED"
+                     mainExpr.gradcolor = mainExpr.gradcolor2_o
+                    mainExpr.gradcolor2 = mainExpr.gradcolor_o
+
                 }
+                onReleased: {
+                    mainExpr.state = "RELEASED"
+                    mainExpr.gradcolor = mainExpr.gradcolor_o
+                    mainExpr.gradcolor2 = mainExpr.gradcolor2_o
+                }
+                onEntered: {
+                    mainExpr.state = "HOVER"
+                    mainExpr.gradcolor = "#d3f0ff"
+                    mainExpr.gradcolor2 = "#61c9ff"
+                }
+                onExited: {
+                    mainExpr.state = "RELEASED"
+                    mainExpr.gradcolor  = mainExpr.gradcolor_o
+                    mainExpr.gradcolor2 = mainExpr.gradcolor2_o
+                }
+                }
+
+                states: [
+                         State {
+                             name: "PRESSED"
+                             PropertyChanges { target: mainExpr; color: "blue";   }
+                         },
+                         State {
+                             name: "RELEASED"
+                             PropertyChanges { target: mainExpr; color: "#0198be"; }
+                         },
+                        State {
+                            name: "HOVER"
+                            PropertyChanges { target: mainExpr; border.color: "#066fff";  /*opacity: 0.8*/}
+                        }
+                ]
             }
 
 //        Component.onCompleted: console.log( "timeout: " +expr.width )
@@ -86,6 +129,17 @@ Rectangle {
             id: rightTopIndex
         }
 
+        gradient: Gradient {
+            id: grad1
+            GradientStop {
+                position: 0
+                color: mainExpr.gradcolor
+            }
 
+            GradientStop {
+                position: 1
+                color: mainExpr.gradcolor2
+            }
+        }
 }
 

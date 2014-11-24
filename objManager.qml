@@ -7,6 +7,16 @@ Column{
     anchors.topMargin: -330
     anchors.right: parent.horizontalCenter
     anchors.rightMargin: -512
+
+    Keys.onPressed: {
+           if (event.key == Qt.Key_Left) {
+                console.log("left arrow")
+           }else if(event.key == Qt.Key_Right){
+                console.log("right arrow")
+           }
+        }
+
+
     function setActive(a){
         Script.activeObj=a
     }
@@ -39,7 +49,7 @@ Column{
     border.width: 2
 
     radius: 20
-    gradient: Gradient {
+    Gradient {
         GradientStop {
             position: 0
             color: "#ffffff"

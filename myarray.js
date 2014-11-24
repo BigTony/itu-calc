@@ -23,6 +23,7 @@ function addLine(item) {
 function resize(obj){
     if (obj.resizable===true){
     obj.width=obj.childrenRect.width
+    obj.height=obj.childrenRect.height
     }
 
     if (obj.parent.resizable===true){
