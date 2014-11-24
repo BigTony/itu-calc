@@ -102,7 +102,21 @@ ApplicationWindow {
         }
     }
 
-
+    /*
+      vyhleda podle zkratky nazev labelu pro status bar
+    */
+    function findModelNameByShortCut(shortCut){
+        var c = 0
+        var elementCount = gridViews[activeGrid].model.count
+        while(c <= elementCount)
+        {
+            if(gridViews[activeGrid].model.get(c).name == shortCut)
+            {
+                   return (gridViews[activeGrid].model.get(c).labelObject.toString()!=" ")?(gridViews[activeGrid].model.get(c).labelObject.toString()):"výraz"
+            }
+         c++
+        }
+    }
 
 
 Rectangle{
@@ -181,68 +195,68 @@ Rectangle{
 //            gridViews[activeGrid].model.get(0).colorCode = "red"
             gridView1.currentItem.focus = true
            console.log(gridViews[activeGrid].model.get(0).colorCode)
-
+            statBar = "Stisk klávesy: q ("+findModelNameByShortCut("q")+")"
             findModelShortCut("q")
-            statBar = "Stisk klávesy: q"
+
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
             manager.test();
             console.log('Key w was pressed');
+            statBar = "Stisk klávesy: w ("+findModelNameByShortCut("w")+")"
             findModelShortCut("w")
-            statBar = "Stisk klávesy: w"
             event.accepted = true;
         }else if (event.key == Qt.Key_E) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: e ("+findModelNameByShortCut("e")+")"
             findModelShortCut("e")
-            statBar = "Stisk klávesy: e"
             event.accepted = true;
         }else if (event.key == Qt.Key_R) {
             console.log('Key r was pressed');
+            statBar = "Stisk klávesy: r ("+findModelNameByShortCut("r")+")"
             findModelShortCut("r")
-            statBar = "Stisk klávesy: r"
             event.accepted = true;
         }else if (event.key == Qt.Key_A) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: a ("+findModelNameByShortCut("a")+")"
             findModelShortCut("a")
-            statBar = "Stisk klávesy: a"
             event.accepted = true;
         }else if (event.key == Qt.Key_S) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: s ("+findModelNameByShortCut("s")+")"
             findModelShortCut("s")
-            statBar = "Stisk klávesy: s"
             event.accepted = true;
         }else if (event.key == Qt.Key_D) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: d ("+findModelNameByShortCut("d")+")"
             findModelShortCut("d")
-            statBar = "Stisk klávesy: d"
             event.accepted = true;
         }else if (event.key == Qt.Key_F) {
             console.log('Key f was pressed');
+            statBar = "Stisk klávesy: f ("+findModelNameByShortCut("f")+")"
             findModelShortCut("f")
-            statBar = "Stisk klávesy: f"
             event.accepted = true;
         }else if (event.key == Qt.Key_Z) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: z ("+findModelNameByShortCut("z")+")"
             findModelShortCut("z")
-            statBar = "Stisk klávesy: z"
             event.accepted = true;
         }else if (event.key == Qt.Key_X) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: x ("+findModelNameByShortCut("x")+")"
             findModelShortCut("x")
-            statBar = "Stisk klávesy: x"
             event.accepted = true;
         }else if (event.key == Qt.Key_C) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: c ("+findModelNameByShortCut("c")+")"
             findModelShortCut("c")
-            statBar = "Stisk klávesy: c"
             event.accepted = true;
         // zpet na main grid
        // jako Back button
        // TODO: aktivovat animaci
         }else if (event.key == Qt.Key_V) {
             console.log('Key v was pressed');
+            statBar = "Stisk klávesy: v ("+findModelNameByShortCut("v")+")"
             findModelShortCut("v")
-            statBar = "Stisk klávesy: v"
             event.accepted = true;
         }else if (event.key == Qt.Key_Space) {
             console.log('Key b was pressed');
