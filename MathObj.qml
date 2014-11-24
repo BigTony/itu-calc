@@ -65,6 +65,7 @@ Rectangle {
                 id:targetArea
                 function setAct(){
                     Script.getManager(targetArea).setActive(parent.parent.p)
+                    Script.getManager(targetArea).
                     console.log("Active obj changet from" +Script.getManager(targetArea).getActive() + " to " + parent.parent.p)
                 }
 
