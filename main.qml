@@ -174,48 +174,58 @@ Rectangle{
            console.log(gridViews[activeGrid].model.get(0).colorCode)
 
             findModelShortCut("q")
+            statBar = "Stisk klávesy: q"
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
             manager.test();
             console.log('Key w was pressed');
             findModelShortCut("w")
-
+            statBar = "Stisk klávesy: w"
             event.accepted = true;
         }else if (event.key == Qt.Key_E) {
             console.log('Key e was pressed');
             findModelShortCut("e")
+            statBar = "Stisk klávesy: e"
             event.accepted = true;
         }else if (event.key == Qt.Key_R) {
             console.log('Key r was pressed');
             findModelShortCut("r")
+            statBar = "Stisk klávesy: r"
             event.accepted = true;
         }else if (event.key == Qt.Key_A) {
             console.log('Key e was pressed');
             findModelShortCut("a")
+            statBar = "Stisk klávesy: a"
             event.accepted = true;
         }else if (event.key == Qt.Key_S) {
             console.log('Key e was pressed');
             findModelShortCut("s")
+            statBar = "Stisk klávesy: s"
             event.accepted = true;
         }else if (event.key == Qt.Key_D) {
             console.log('Key e was pressed');
             findModelShortCut("d")
+            statBar = "Stisk klávesy: d"
             event.accepted = true;
         }else if (event.key == Qt.Key_F) {
             console.log('Key f was pressed');
             findModelShortCut("f")
+            statBar = "Stisk klávesy: f"
             event.accepted = true;
         }else if (event.key == Qt.Key_Z) {
             console.log('Key e was pressed');
             findModelShortCut("z")
+            statBar = "Stisk klávesy: z"
             event.accepted = true;
         }else if (event.key == Qt.Key_X) {
             console.log('Key e was pressed');
             findModelShortCut("x")
+            statBar = "Stisk klávesy: x"
             event.accepted = true;
         }else if (event.key == Qt.Key_C) {
             console.log('Key e was pressed');
             findModelShortCut("c")
+            statBar = "Stisk klávesy: c"
             event.accepted = true;
         // zpet na main grid
        // jako Back button
@@ -223,9 +233,11 @@ Rectangle{
         }else if (event.key == Qt.Key_V) {
             console.log('Key v was pressed');
             findModelShortCut("v")
+            statBar = "Stisk klávesy: v"
             event.accepted = true;
         }else if (event.key == Qt.Key_Space) {
             console.log('Key b was pressed');
+            statBar = "Stisk klávesy: mezerník"
             switchGrids(1,0)
             btnBack.visible = false
             event.accepted = true;
@@ -265,6 +277,7 @@ Rectangle{
             onClicked: {
                 switchGrids(1,0)
                 btnBack.visible = false
+                statBar = "Klinuto na tlačítko zpět"
             }
             onEntered: btnBack.opacity = 0.7
             onExited: btnBack.opacity = 1
@@ -1057,6 +1070,14 @@ ListModel {
                     }
 
                     MouseArea{
+                        function stisk(libg) {
+                            if (libg==="n") {
+                                return labelObject
+                            } else {
+                                return "vyraz"
+                            }
+                        }
+
                         hoverEnabled: true
                         id: mouseAreaGridView1
                         anchors.fill: parent
@@ -1064,6 +1085,7 @@ ListModel {
                             buttonObject.state = "PRESSED"
                             buttonObject.gradcolor = buttonObject.gradcolor2_o
                             buttonObject.gradcolor2 = buttonObject.gradcolor_o
+                            statBar = "Klik "+stisk(bg)
                         }
                         onReleased: {
                             buttonObject.state = "RELEASED"
