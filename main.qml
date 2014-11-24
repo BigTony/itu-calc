@@ -11,6 +11,7 @@ ApplicationWindow {
     id: mainWin
 
     property string theme: "bg1.jpg" // basic
+    property string statBar: "" // init
 
 
        menuBar: MenuBar {
@@ -127,6 +128,36 @@ Rectangle{
         source: "qrc:///bg/"+theme
     }
 
+
+    // status bar
+    Rectangle {
+        id: statusbar
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: 25
+
+        Text {
+            id: statText
+            x: 10
+            anchors.verticalCenter: parent.verticalCenter
+            text: qsTr(statBar)
+            font.pixelSize: 12
+        }
+        gradient: Gradient {
+            GradientStop {
+                position: 0
+                color: "#ffffff"
+            }
+            GradientStop {
+                position: 0.3
+                color: "#d9d9d9"
+            }
+            GradientStop {
+                position: 1
+                color: "#ffffff"
+            }
+        }
+    }
 
     // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
