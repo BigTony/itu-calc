@@ -45,6 +45,12 @@ Column{
     }
     function addUni(uni){
         var obj = Script.getObj(Script.activeObj)
+        var component1 = Qt.createComponent("MathObj.qml");
+        Script.addObj(component1.createObject(Script.getLine(0)));
+        Script.getObj(Script.activeObj).setP(Script.objArray.length-1)
+         Script.getObj(Script.objArray.length-1)
+        Script.getObj(Script.objArray.length-1).setP(Script.objArray.length-1)
+        Script.getObj(Script.objArray.length-1).setText(uni)
     if (obj.getText()===" "){
 
     }
@@ -116,8 +122,6 @@ TextField{
     Script.getObj(Script.activeObj).setP(Script.objArray.length-1)
     Script.addObj(component1.createObject(Script.getLine(0)));
     Script.getObj(1).setP(Script.objArray.length-1)
-    Script.getObj(0).parent=Script.getLine(0)
-    Script.getObj(0).parent=Script.getLine(0)
         Script.getObj(Script.activeObj).setText("1aACT")
         Script.getObj(1).setText("22222")
     }

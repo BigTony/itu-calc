@@ -99,6 +99,7 @@ ApplicationWindow {
                     console.log(gridViews[activeGrid].model.get(c).textObject.toString())
                 }else{
                     console.log(gridViews[activeGrid].model.get(c).textObject.toString())
+                    manager.addUni(gridViews[activeGrid].model.get(c).textObject.toString());
                 }
                 return
             }else
