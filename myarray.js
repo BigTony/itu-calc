@@ -10,6 +10,10 @@ function getObj(x) {
 function addObj(item) {
      objArray.push(item)
  }
+function insertObj(item,x) {
+     objArray.splice(x,0,item)
+ }
+
 
 function getLine(x) {
      return lineArray[x]

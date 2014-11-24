@@ -1,32 +1,33 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import "myarray.js" as Script
-Rectangle {
-    id: outArea
+Column{
+    anchors.top: parent.verticalCenter
+    anchors.topMargin: -330
+    anchors.right: parent.horizontalCenter
+    anchors.rightMargin: -512
     function addUni(uni){
     var obj = Script.getObj(Script.activeObj)
-    console.log(obj.p)   }
+    textedit.text=obj.getText()
+    }
     function test(){
         Script.getLine(0).y=100;
     }
     function addObject(obj){
-
     }
     function delActive(){}
     function setActive(x,y){}
     function addLine(){}
+    Rectangle {
+    id: outArea
+
     width: 500
     height: 500
     x: 0
     color: "white"
     border.width: 2
-    anchors.top: parent.verticalCenter
-    anchors.topMargin: -330
-    anchors.right: parent.horizontalCenter
-    anchors.rightMargin: -512
 
     radius: 20
-
     gradient: Gradient {
         GradientStop {
             position: 0
@@ -38,7 +39,25 @@ Rectangle {
             color: "#dcf4ff"
         }
     }
+}
+/*
+  Zde se edituje aktivni prvek
+  */
+TextField{
+    font.pixelSize: 20
+    id: textedit
+    height:30
+    width:500
+    onEditingFinished: sendText()
+    function sendText(){
+            Script.getObj(Script.activeObj).setText(text)
+    }
+    function getText() {
+           text= Script.getObj(Script.activeObj).getText()
+    }
 
+
+}
 
 
     Rectangle{
@@ -58,5 +77,5 @@ Rectangle {
         Script.getObj(Script.activeObj).color="green"
     }
     }
-}
 
+}

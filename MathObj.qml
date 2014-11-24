@@ -5,6 +5,8 @@ import "myarray.js" as Script
 
 
 Rectangle {
+
+
     property bool resizable: true
     property int p: 0
     color: "red"
@@ -12,43 +14,41 @@ Rectangle {
     height: 20
     id: mainExpr
     property string objType
+    function setText(texts) {
+        textfi.text=texts
+        textfi.resize()
+    }
+    function getText(){
+        return textfi.text
+    }
+
+
     function addIndex (index){}
     function delIndex (index){}
     function reDraw(){}
 
-    function getShit(){
-        return expr.width
+    function insertText(text){
+
+    }
+    function makeSymbol(symbol){
+
     }
 
 
-//        property load: loader
-//        Component.onCompleted: load = loader
-
-//        Component.onCompleted: console.log(expr.width)
-
-
-//        Component.onCompleted: console.log( "timeout: " + loader.item.width )
-
-
-
-        Rectangle{
-            property bool resizable: true
-            id:expr
-            width:20
-            height:20
-            color:"blue"
-            TextField{
+            Text{
+                verticalAlignment: Text.AlignVCenter
+ //               horizontalAlignment: Text.AlignHCenter
+                font.family: "Cambria Math"
                 property bool resizable: true
-                font.pixelSize: 15
+                font.pixelSize: 20
                 id: textfi
                 width:15
-    //            onEditingFinished: resize()
+                text:"Test"
                 function resize(){
                 width=15+text.length*8
                 Script.resize(textfi)
                 }
             }
-        }
 
 //        Component.onCompleted: console.log( "timeout: " +expr.width )
 

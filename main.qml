@@ -146,6 +146,7 @@ Rectangle{
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
             manager.test();
+            manager.addUni();
             console.log('Key w was pressed');
             findModelShortCut("w")
 
