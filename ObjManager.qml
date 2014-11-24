@@ -8,12 +8,6 @@ Column{
     anchors.right: parent.horizontalCenter
     anchors.rightMargin: -512
 
-    Button {
-        width: 50
-        height: 50
-        x: 500
-        y:500
-    }
 
     Keys.onPressed: {
            if (event.key == Qt.Key_Left) {
