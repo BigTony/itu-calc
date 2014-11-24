@@ -162,6 +162,12 @@ Rectangle{
         x:770
         y:530
         text: "<<"
+        MouseArea{
+        anchors.fill: parent
+        onPressed: {
+        manager.prevAct()
+        }
+        }
     }
 
     Button {
@@ -171,6 +177,12 @@ Rectangle{
         x:835
         y:530
         text: ">>"
+        MouseArea{
+        anchors.fill: parent
+        onPressed: {
+        manager.nextAct()
+        }
+        }
     }
 
 

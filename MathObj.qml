@@ -5,7 +5,7 @@ import "myarray.js" as Script
 
 
 Rectangle {
-    border.color: "black"
+    border.color: "#050505"
     border.width: 1
     property color gradcolor_o: "#ffffff"
     property color gradcolor2_o: "#98dcff"
@@ -91,11 +91,11 @@ Rectangle {
                          },
                          State {
                              name: "RELEASED"
-                             PropertyChanges { target: mainExpr; color: "#0198be"; }
+                             PropertyChanges { target: mainExpr; color: "#0198be";opacity: 0.8; }
                          },
                         State {
                             name: "HOVER"
-                            PropertyChanges { target: mainExpr; border.color: "#066fff";  /*opacity: 0.8*/}
+                            PropertyChanges { target: mainExpr; border.color: "#050505";  }
                         }
                 ]
             }

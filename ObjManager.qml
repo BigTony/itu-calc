@@ -11,17 +11,34 @@ Column{
     Keys.onPressed: {
            if (event.key == Qt.Key_Left) {
                 console.log("left arrow")
+               prevAct()
            }else if(event.key == Qt.Key_Right){
                 console.log("right arrow")
+               nextAct()
            }
         }
 
     function setEditTexr(str){
         textedit.text=str
     }
+    function nextAct(){
+        Script.getObj(Script.activeObj).state="RELEASED"
+        Script.nextAct()
+        textedit.text=Script.getObj(Script.activeObj).getText()
+        Script.getObj(Script.activeObj).state="PRESSED"
+    }
+    function prevAct(){
+        Script.getObj(Script.activeObj).state="RELEASED"
+        Script.prevAct()
+        textedit.text=Script.getObj(Script.activeObj).getText()
+        Script.getObj(Script.activeObj).state="PRESSED"
+    }
 
     function setActive(a){
+        Script.getObj(Script.activeObj).state="RELEASED"
         Script.activeObj=a
+
+        Script.getObj(Script.activeObj).state="PRESSED"
     }
     function getActive(){
         return Script.activeObj

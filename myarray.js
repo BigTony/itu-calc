@@ -31,6 +31,22 @@ function resize(obj){
     }
 
 }
+
+function nextAct(){
+  if (activeObj!=objArray.length-1)
+  {
+   activeObj++
+  }
+}
+
+function prevAct(){
+  if (activeObj!=0)
+  {
+   activeObj--
+  }
+}
+
+
 function getManager(obj){
     var pom = obj
     while ((pom.man===false)){
