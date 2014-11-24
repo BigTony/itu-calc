@@ -11,6 +11,7 @@ ApplicationWindow {
     id: mainWin
 
     property string theme: "bg1.jpg" // basic
+    property string statBar: "" // init
 
 
        menuBar: MenuBar {
@@ -28,15 +29,24 @@ ApplicationWindow {
                title: "Změna stylu"
                MenuItem {
                    text: qsTr("Original")
-                   onTriggered: theme = "bg1.jpg"
+                   onTriggered: {
+                       theme = "bg1.jpg"
+                       statBar = "Nastaven původní styl"
+                   }
                }
                MenuItem {
                    text: qsTr("Vzorek")
-                   onTriggered: theme = "bg2.jpg"
+                   onTriggered: {
+                       theme = "bg2.jpg"
+                       statBar = "Nastaven styl na vzorek"
+                   }
                }
                MenuItem {
                    text: qsTr("Hello Kitty")
-                   onTriggered: theme = "bg3.jpg"
+                   onTriggered: {
+                       theme = "bg3.jpg"
+                       statBar = "Nastaven styl Hello Kitty"
+                   }
                }
            }
        }
@@ -92,7 +102,21 @@ ApplicationWindow {
         }
     }
 
-
+    /*
+      vyhleda podle zkratky nazev labelu pro status bar
+    */
+    function findModelNameByShortCut(shortCut){
+        var c = 0
+        var elementCount = gridViews[activeGrid].model.count
+        while(c <= elementCount)
+        {
+            if(gridViews[activeGrid].model.get(c).name == shortCut)
+            {
+                   return (gridViews[activeGrid].model.get(c).labelObject.toString()!=" ")?(gridViews[activeGrid].model.get(c).labelObject.toString()):"výraz"
+            }
+         c++
+        }
+    }
 
 
 Rectangle{
@@ -128,6 +152,37 @@ Rectangle{
     }
 
 
+    // status bar
+    Rectangle {
+        id: statusbar
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: 25
+        opacity: 0.8
+
+        Text {
+            id: statText
+            x: 10
+            anchors.verticalCenter: parent.verticalCenter
+            text: qsTr(statBar)
+            font.pixelSize: 12
+        }
+        gradient: Gradient {
+            GradientStop {
+                position: 0
+                color: "#ffffff"
+            }
+            GradientStop {
+                position: 0.3
+                color: "#d9d9d9"
+            }
+            GradientStop {
+                position: 1
+                color: "#ffffff"
+            }
+        }
+    }
+
     // TODO: aktivovat animace na buttonec
     Keys.onPressed: {
         if (event.key == Qt.Key_Q) {
@@ -141,50 +196,60 @@ Rectangle{
 //            gridViews[activeGrid].model.get(0).colorCode = "red"
             gridView1.currentItem.focus = true
            console.log(gridViews[activeGrid].model.get(0).colorCode)
-
+            statBar = "Stisk klávesy: q ("+findModelNameByShortCut("q")+")"
             findModelShortCut("q")
+
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
             manager.test();
             manager.addUni();
             console.log('Key w was pressed');
+            statBar = "Stisk klávesy: w ("+findModelNameByShortCut("w")+")"
             findModelShortCut("w")
-
             event.accepted = true;
         }else if (event.key == Qt.Key_E) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: e ("+findModelNameByShortCut("e")+")"
             findModelShortCut("e")
             event.accepted = true;
         }else if (event.key == Qt.Key_R) {
             console.log('Key r was pressed');
+            statBar = "Stisk klávesy: r ("+findModelNameByShortCut("r")+")"
             findModelShortCut("r")
             event.accepted = true;
         }else if (event.key == Qt.Key_A) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: a ("+findModelNameByShortCut("a")+")"
             findModelShortCut("a")
             event.accepted = true;
         }else if (event.key == Qt.Key_S) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: s ("+findModelNameByShortCut("s")+")"
             findModelShortCut("s")
             event.accepted = true;
         }else if (event.key == Qt.Key_D) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: d ("+findModelNameByShortCut("d")+")"
             findModelShortCut("d")
             event.accepted = true;
         }else if (event.key == Qt.Key_F) {
             console.log('Key f was pressed');
+            statBar = "Stisk klávesy: f ("+findModelNameByShortCut("f")+")"
             findModelShortCut("f")
             event.accepted = true;
         }else if (event.key == Qt.Key_Z) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: z ("+findModelNameByShortCut("z")+")"
             findModelShortCut("z")
             event.accepted = true;
         }else if (event.key == Qt.Key_X) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: x ("+findModelNameByShortCut("x")+")"
             findModelShortCut("x")
             event.accepted = true;
         }else if (event.key == Qt.Key_C) {
             console.log('Key e was pressed');
+            statBar = "Stisk klávesy: c ("+findModelNameByShortCut("c")+")"
             findModelShortCut("c")
             event.accepted = true;
         // zpet na main grid
@@ -192,10 +257,12 @@ Rectangle{
        // TODO: aktivovat animaci
         }else if (event.key == Qt.Key_V) {
             console.log('Key v was pressed');
+            statBar = "Stisk klávesy: v ("+findModelNameByShortCut("v")+")"
             findModelShortCut("v")
             event.accepted = true;
         }else if (event.key == Qt.Key_Space) {
             console.log('Key b was pressed');
+            statBar = "Stisk klávesy: mezerník"
             switchGrids(1,0)
             btnBack.visible = false
             event.accepted = true;
@@ -235,6 +302,7 @@ Rectangle{
             onClicked: {
                 switchGrids(1,0)
                 btnBack.visible = false
+                statBar = "Klinuto na tlačítko zpět"
             }
             onEntered: btnBack.opacity = 0.7
             onExited: btnBack.opacity = 1
@@ -705,6 +773,7 @@ ListModel {
         textObject: "../icons/1.png"
         switchOp: false
         bg: "../icons/1.png"
+        describe: "Horní index"
     }
 
     ListElement{
@@ -714,6 +783,7 @@ ListModel {
         textObject: "../icons/2.png"
         switchOp: false
         bg: "../icons/2.png"
+        describe: "Dolní index"
     }
 
     ListElement{
@@ -723,6 +793,7 @@ ListModel {
         textObject: "../icons/3.png"
         switchOp: false
         bg: "../icons/3.png"
+        describe: "Horní a dolní index"
     }
 
     ListElement{
@@ -732,6 +803,7 @@ ListModel {
         textObject: "../icons/4.png"
         switchOp: false
         bg: "../icons/4.png"
+        describe: "Levý horní a dolní index"
     }
 
     ListElement{
@@ -741,6 +813,7 @@ ListModel {
         textObject: "../icons/5.png"
         switchOp: false
         bg: "../icons/5.png"
+        describe: "Druhá mocnina"
     }
 
     ListElement{
@@ -750,6 +823,7 @@ ListModel {
         textObject: "../icons/6.png"
         switchOp: false
         bg: "../icons/6.png"
+        describe: "Druhá odmocnina"
     }
 
     ListElement{
@@ -759,6 +833,7 @@ ListModel {
         textObject: "../icons/7.png"
         switchOp: false
         bg: "../icons/7.png"
+        describe: "Odmocnina se stupňem"
     }
 
     ListElement{
@@ -768,6 +843,7 @@ ListModel {
         textObject: "../icons/8.png"
         switchOp: false
         bg: "../icons/8.png"
+        describe: "Třetí odmocnina"
     }
 
 }
@@ -883,6 +959,7 @@ ListModel {
                 labelObject: " "
                 gridNumber: 4
                 bg: "../icons/1.png"
+                describe: "Mocnina"
             }
 
             ListElement{
@@ -933,6 +1010,7 @@ ListModel {
                 bg: "../icons/10.png"
                 special: false
                 //bg: "n"
+                describe: "Zlomek"
             }
 
             ListElement {
@@ -942,6 +1020,7 @@ ListModel {
                 labelObject: ""
                 special: false
                 bg: "../icons/1.png"
+                describe: "Mocnina"
             }
 
             ListElement {
@@ -951,6 +1030,7 @@ ListModel {
                 labelObject: ""
                 special: false
                 bg: "../icons/6.png"
+                describe: "Druhá odmocnina"
             }
 
             ListElement {
@@ -960,6 +1040,7 @@ ListModel {
                 labelObject: ""
                 special: false
                 bg: "../icons/5.png"
+                describe: "Druhá mocnina"
             }
 
 
@@ -1027,6 +1108,14 @@ ListModel {
                     }
 
                     MouseArea{
+                        function stisk(libg) {
+                            if (libg==="n") {
+                                return labelObject
+                            } else {
+                                return describe ? describe : "výraz"
+                            }
+                        }
+
                         hoverEnabled: true
                         id: mouseAreaGridView1
                         anchors.fill: parent
@@ -1034,6 +1123,7 @@ ListModel {
                             buttonObject.state = "PRESSED"
                             buttonObject.gradcolor = buttonObject.gradcolor2_o
                             buttonObject.gradcolor2 = buttonObject.gradcolor_o
+                            statBar = "Kliknuto na: "+stisk(bg)
                         }
                         onReleased: {
                             buttonObject.state = "RELEASED"
