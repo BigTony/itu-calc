@@ -65,7 +65,7 @@ Rectangle {
                 id:targetArea
                 function setAct(){
                     Script.getManager(targetArea).setActive(parent.parent.p)
-                    Script.getManager(targetArea).
+                    Script.getManager(targetArea).setEditTexr(textfi.text)
                     console.log("Active obj changet from" +Script.getManager(targetArea).getActive() + " to " + parent.parent.p)
                 }
 

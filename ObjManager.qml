@@ -22,6 +22,9 @@ Column{
            }
         }
 
+    function setEditTexr(str){
+        textedit.text=str
+    }
 
     function setActive(a){
         Script.activeObj=a
