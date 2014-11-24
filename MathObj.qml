@@ -65,6 +65,7 @@ Rectangle {
                 id:targetArea
                 function setAct(){
                     Script.getManager(targetArea).setActive(parent.parent.p)
+                    Script.getManager(targetArea).
                     console.log("Active obj changet from" +Script.getManager(targetArea).getActive() + " to " + parent.parent.p)
                 }
 
@@ -75,11 +76,6 @@ Rectangle {
                      mainExpr.gradcolor = mainExpr.gradcolor2_o
                     mainExpr.gradcolor2 = mainExpr.gradcolor_o
 
-                }
-                onReleased: {
-                    mainExpr.state = "RELEASED"
-                    mainExpr.gradcolor = mainExpr.gradcolor_o
-                    mainExpr.gradcolor2 = mainExpr.gradcolor2_o
                 }
                 onEntered: {
                     mainExpr.state = "HOVER"

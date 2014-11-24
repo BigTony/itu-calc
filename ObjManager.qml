@@ -1,14 +1,13 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import "myarray.js" as Script
+
 Column{
     property bool man: true
     anchors.top: parent.verticalCenter
     anchors.topMargin: -330
     anchors.right: parent.horizontalCenter
     anchors.rightMargin: -512
-
-
     Keys.onPressed: {
            if (event.key == Qt.Key_Left) {
                 console.log("left arrow")
