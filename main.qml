@@ -155,6 +155,24 @@ Rectangle{
         source: "qrc:///bg/"+theme
     }
 
+    Button {
+        id: buttonLeft
+        height: 30
+        width: 60
+        x:770
+        y:530
+        text: "<<"
+    }
+
+    Button {
+        id: buttonRight
+        height: 30
+        width: 60
+        x:835
+        y:530
+        text: ">>"
+    }
+
 
     // status bar
     Rectangle {
