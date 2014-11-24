@@ -3,7 +3,6 @@ var activeObj = 0;
 var objArray = new Array();
 var lineArray = new Array();
 
-
 function getObj(x) {
      return objArray[x]
  }
@@ -30,4 +29,12 @@ function resize(obj){
     resize(obj.parent)
     }
 
+}
+function getManager(obj){
+    var pom = obj
+    while ((pom.man===false)){
+        pom=pom.parent
+//        console.log(pom)
+    }
+    return pom
 }

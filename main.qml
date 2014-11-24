@@ -92,6 +92,7 @@ ApplicationWindow {
                     return
                 }else if(gridViews[activeGrid].model.get(c).special){
                     console.log("unicode")
+                    manager.addUni(gridViews[activeGrid].model.get(c).textObject.toString());
                     console.log(gridViews[activeGrid].model.get(c).textObject.toString())
                 }else{
                     console.log(gridViews[activeGrid].model.get(c).textObject.toString())
@@ -201,8 +202,6 @@ Rectangle{
 
             event.accepted = true;
         }else if (event.key == Qt.Key_W) {
-            manager.test();
-            manager.addUni();
             console.log('Key w was pressed');
             statBar = "Stisk klávesy: w ("+findModelNameByShortCut("w")+")"
             findModelShortCut("w")

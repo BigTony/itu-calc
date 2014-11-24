@@ -6,7 +6,7 @@ import "myarray.js" as Script
 
 Rectangle {
 
-
+    property bool man: false
     property bool resizable: true
     property int p: 0
     color: "red"
@@ -20,6 +20,9 @@ Rectangle {
     }
     function getText(){
         return textfi.text
+    }
+    function setP(x){
+        p=x
     }
 
 
@@ -36,6 +39,7 @@ Rectangle {
 
 
             Text{
+                property bool man: false
                 verticalAlignment: Text.AlignVCenter
  //               horizontalAlignment: Text.AlignHCenter
                 font.family: "Cambria Math"
@@ -43,10 +47,22 @@ Rectangle {
                 font.pixelSize: 20
                 id: textfi
                 width:15
-                text:"Test"
                 function resize(){
-                width=15+text.length*8
+                textfi.width=paintedWidth
+                textfi.height=paintedHeight
                 Script.resize(textfi)
+                targetArea.anchors.fill=textfi
+                }
+                MouseArea{
+                property bool man: false
+                id:targetArea
+                function setAct(){
+                    Script.getManager(targetArea).setActive(parent.parent.p)
+                    console.log("Active obj changet from" +Script.getManager(targetArea).getActive() + " to " + parent.parent.p)
+                }
+
+                anchors.fill: parent
+                onEntered:setAct()
                 }
             }
 

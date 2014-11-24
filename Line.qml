@@ -2,10 +2,7 @@ import QtQuick 2.2
 
 
 Row {
-    Rectangle{
-        border.color: "grey"
-        border.width: 1
-    }
+    property bool man: false
 
     height: 62
 
