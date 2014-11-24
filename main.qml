@@ -158,6 +158,7 @@ Rectangle{
         anchors.bottom: parent.bottom
         width: parent.width
         height: 25
+        opacity: 0.8
 
         Text {
             id: statText
