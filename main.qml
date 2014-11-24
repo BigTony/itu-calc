@@ -10,6 +10,7 @@ ApplicationWindow {
     title: qsTr("Hello World")
     id: mainWin
 
+
     property string theme: "bg1.jpg" // basic
     property string statBar: "" // init
 
@@ -20,6 +21,7 @@ ApplicationWindow {
                MenuItem {
                    text: qsTr("Exit")
                    onTriggered: Qt.quit();
+
                }
 
                MenuSeparator { }
@@ -73,6 +75,7 @@ ApplicationWindow {
 //            gridViews[gridNumber].visible = true
             activeGrid = gridNumber
             btnBack.visible=true
+            console.log("ahoj")
             return 1
         }
         return 0
