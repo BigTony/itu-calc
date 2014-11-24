@@ -757,6 +757,7 @@ ListModel {
         textObject: "../icons/1.png"
         switchOp: false
         bg: "../icons/1.png"
+        describe: "Horní index"
     }
 
     ListElement{
@@ -766,6 +767,7 @@ ListModel {
         textObject: "../icons/2.png"
         switchOp: false
         bg: "../icons/2.png"
+        describe: "Dolní index"
     }
 
     ListElement{
@@ -775,6 +777,7 @@ ListModel {
         textObject: "../icons/3.png"
         switchOp: false
         bg: "../icons/3.png"
+        describe: "Horní a dolní index"
     }
 
     ListElement{
@@ -784,6 +787,7 @@ ListModel {
         textObject: "../icons/4.png"
         switchOp: false
         bg: "../icons/4.png"
+        describe: "Levý horní a dolní index"
     }
 
     ListElement{
@@ -793,6 +797,7 @@ ListModel {
         textObject: "../icons/5.png"
         switchOp: false
         bg: "../icons/5.png"
+        describe: "Druhá mocnina"
     }
 
     ListElement{
@@ -802,6 +807,7 @@ ListModel {
         textObject: "../icons/6.png"
         switchOp: false
         bg: "../icons/6.png"
+        describe: "Druhá odmocnina"
     }
 
     ListElement{
@@ -811,6 +817,7 @@ ListModel {
         textObject: "../icons/7.png"
         switchOp: false
         bg: "../icons/7.png"
+        describe: "Odmocnina se stupňem"
     }
 
     ListElement{
@@ -820,6 +827,7 @@ ListModel {
         textObject: "../icons/8.png"
         switchOp: false
         bg: "../icons/8.png"
+        describe: "Třetí odmocnina"
     }
 
 }
@@ -935,6 +943,7 @@ ListModel {
                 labelObject: " "
                 gridNumber: 4
                 bg: "../icons/1.png"
+                describe: "Mocnina"
             }
 
             ListElement{
@@ -985,6 +994,7 @@ ListModel {
                 bg: "../icons/10.png"
                 special: false
                 //bg: "n"
+                describe: "Zlomek"
             }
 
             ListElement {
@@ -994,6 +1004,7 @@ ListModel {
                 labelObject: ""
                 special: false
                 bg: "../icons/1.png"
+                describe: "Mocnina"
             }
 
             ListElement {
@@ -1003,6 +1014,7 @@ ListModel {
                 labelObject: ""
                 special: false
                 bg: "../icons/6.png"
+                describe: "Druhá odmocnina"
             }
 
             ListElement {
@@ -1012,6 +1024,7 @@ ListModel {
                 labelObject: ""
                 special: false
                 bg: "../icons/5.png"
+                describe: "Druhá mocnina"
             }
 
 
@@ -1083,7 +1096,7 @@ ListModel {
                             if (libg==="n") {
                                 return labelObject
                             } else {
-                                return "vyraz"
+                                return describe ? describe : "výraz"
                             }
                         }
 
@@ -1094,7 +1107,7 @@ ListModel {
                             buttonObject.state = "PRESSED"
                             buttonObject.gradcolor = buttonObject.gradcolor2_o
                             buttonObject.gradcolor2 = buttonObject.gradcolor_o
-                            statBar = "Klik "+stisk(bg)
+                            statBar = "Kliknuto na: "+stisk(bg)
                         }
                         onReleased: {
                             buttonObject.state = "RELEASED"
