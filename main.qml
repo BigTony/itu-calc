@@ -324,11 +324,13 @@ Rectangle{
     Button {
         id: btnBack
         x: gridView1.x
+        y: gridView1.y +490
+        z: gridView1.z + 1
        // y: 10
-        text: qsTr("Zpět")
+        text: qsTr("Zpět (Mezernik)")
         visible: false
-        width: 64
-        height: 32
+        width: 140
+        height: 35
 
         MouseArea{
             anchors.fill: parent
