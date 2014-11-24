@@ -29,15 +29,24 @@ ApplicationWindow {
                title: "Změna stylu"
                MenuItem {
                    text: qsTr("Original")
-                   onTriggered: theme = "bg1.jpg"
+                   onTriggered: {
+                       theme = "bg1.jpg"
+                       statBar = "Nastaven původní styl"
+                   }
                }
                MenuItem {
                    text: qsTr("Vzorek")
-                   onTriggered: theme = "bg2.jpg"
+                   onTriggered: {
+                       theme = "bg2.jpg"
+                       statBar = "Nastaven styl na vzorek"
+                   }
                }
                MenuItem {
                    text: qsTr("Hello Kitty")
-                   onTriggered: theme = "bg3.jpg"
+                   onTriggered: {
+                       theme = "bg3.jpg"
+                       statBar = "Nastaven styl Hello Kitty"
+                   }
                }
            }
        }
