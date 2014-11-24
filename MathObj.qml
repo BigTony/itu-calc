@@ -86,11 +86,6 @@ Rectangle {
                     mainExpr.gradcolor = "#d3f0ff"
                     mainExpr.gradcolor2 = "#61c9ff"
                 }
-                onExited: {
-                    mainExpr.state = "RELEASED"
-                    mainExpr.gradcolor  = mainExpr.gradcolor_o
-                    mainExpr.gradcolor2 = mainExpr.gradcolor2_o
-                }
                 }
 
                 states: [
